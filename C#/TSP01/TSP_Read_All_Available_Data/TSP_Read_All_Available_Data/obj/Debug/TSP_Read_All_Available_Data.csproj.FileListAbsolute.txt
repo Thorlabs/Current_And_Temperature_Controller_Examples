@@ -1,0 +1,11 @@
+C:\Users\manzelmi\source\repos\For Github\TSP_Read_All_Available_Data\TSP_Read_All_Available_Data\bin\Debug\TSP_Read_All_Available_Data.exe.config
+C:\Users\manzelmi\source\repos\For Github\TSP_Read_All_Available_Data\TSP_Read_All_Available_Data\bin\Debug\TSP_Read_All_Available_Data.exe
+C:\Users\manzelmi\source\repos\For Github\TSP_Read_All_Available_Data\TSP_Read_All_Available_Data\bin\Debug\TSP_Read_All_Available_Data.pdb
+C:\Users\manzelmi\source\repos\For Github\TSP_Read_All_Available_Data\TSP_Read_All_Available_Data\obj\Debug\TSP_Read_All_Available_Data.csproj.AssemblyReference.cache
+C:\Users\manzelmi\source\repos\For Github\TSP_Read_All_Available_Data\TSP_Read_All_Available_Data\obj\Debug\TSP_Read_All_Available_Data.csproj.SuggestedBindingRedirects.cache
+C:\Users\manzelmi\source\repos\For Github\TSP_Read_All_Available_Data\TSP_Read_All_Available_Data\obj\Debug\TSP_Read_All_Available_Data.csproj.CoreCompileInputs.cache
+C:\Users\manzelmi\source\repos\For Github\TSP_Read_All_Available_Data\TSP_Read_All_Available_Data\obj\Debug\TSP_Read_All_Available_Data.exe
+C:\Users\manzelmi\source\repos\For Github\TSP_Read_All_Available_Data\TSP_Read_All_Available_Data\obj\Debug\TSP_Read_All_Available_Data.pdb
+C:\Users\manzelmi\source\repos\For Github\TSP_Read_All_Available_Data\TSP_Read_All_Available_Data\bin\Debug\Thorlabs.TLTSP01B_64.Interop.dll
+C:\Users\manzelmi\source\repos\For Github\TSP_Read_All_Available_Data\TSP_Read_All_Available_Data\bin\Debug\Thorlabs.TLTSP01B_64.Interop.xml
+C:\Users\manzelmi\source\repos\For Github\TSP_Read_All_Available_Data\TSP_Read_All_Available_Data\obj\Debug\TSP_Read_All_Available_Data.csproj.CopyComplete
