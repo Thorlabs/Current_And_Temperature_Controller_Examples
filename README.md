@@ -1,5 +1,5 @@
 # Current_And_Temperature_Controller_Examples
-Software examples for Thorlabs products that are used for controlling current and monitoring temperature 
+Software examples for Thorlabs current drivers and temperature drivers/monitors.   
 
 ## Repo Organization
 All examples are split up by programming language and product type. Directions on using specific examples are given within the folders.
