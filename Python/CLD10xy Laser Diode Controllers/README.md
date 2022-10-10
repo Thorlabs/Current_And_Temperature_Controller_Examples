@@ -8,4 +8,6 @@ Please note that the resource name (“USB0::0x1313::…”) in the sample code 
 
 ## ITC4000, LDC4000, and TED4000 Controllers
 
-The ITC4000, LDC4000, and TED4000 controllers can be controlled in the same way as the CLD controllers. So you can use this example as a guideline for these controllers as well. Please refer to the respective manuals for more details about the commands available on these devices. We will also add dedicated example for these controllers in the future.
+The ITC4000, LDC4000, and TED4000 controllers can be controlled in the same way as the CLD controllers. So you can use this example as a guideline for these controllers as well. You just need to adjust the used commands. Please refer to the respective manuals for more details about the commands available on these devices.
+
+We will also add dedicated example for these controllers in the future.
