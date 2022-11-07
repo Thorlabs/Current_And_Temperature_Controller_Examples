@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Thorlabs.TLTSP01B_64.Interop;
 
 namespace TSP_Read_All_Available_Data
-{//Pull request test
+{
     class Program
     {
         private static TLTSPB tltspb = null;
