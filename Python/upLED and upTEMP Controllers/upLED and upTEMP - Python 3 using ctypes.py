@@ -42,30 +42,53 @@ res=lib.TLUP_init(upName.value, 0, 0, byref(upHandle))
 #If the device is an upLED, this section is executed.
 if (modelName.value).decode() == "upLED":
 
+    #Enables the use of LEDs without EEPROM (non-Thorlabs or unmounted LEDs).
+    print(lib.TLUP_setLedUseNonThorlabsLed(upHandle, 1))
+    
     #Make sure the LED is switched off (0 = off, 1 = on).
     lib.TLUP_switchLedOutput(upHandle,0)
 
     #Get information about the connected LED.
-    #!!! This only works for Thorlabs' Mounted LEDs.
+    #!!! This only works for Thorlabs' Mounted LEDs with an EEPROM chip on the PCB.
+    #!!! Third-party or unmounted LEDs do not have such a chip.
     currentSetpoint = c_double()
     LEDName = create_string_buffer(256)
     LEDSerialNumber = create_string_buffer(256)
     LEDCurrentLimit = c_double()
     LEDForwardVoltage = c_double()
-    LEDWavelength = c_double()
+    LEDWavelength = c_double(0)
     
     lib.TLUP_getLedInfo(upHandle, LEDName, LEDSerialNumber, byref(LEDCurrentLimit),
                         byref(LEDForwardVoltage), byref(LEDWavelength))
-    print("Connected LED:", (LEDName.value).decode(), ", serial number:", (LEDSerialNumber.value).decode(),", wavelength [nm]:",LEDWavelength.value)
-    print("max LED current [A]:", LEDCurrentLimit.value, ", max forward voltage [V]:", LEDForwardVoltage.value)
-    print()
 
-    #Set the current setpoint in Ampere to 10% of the current limit of this LED.
-    currentSetpoint = c_double((0.1) * LEDCurrentLimit.value)
-    lib.TLUP_setLedCurrentSetpoint(upHandle,currentSetpoint)
-    print("LED current set to [A]:", currentSetpoint.value)
-    print()
+    #if section: LED with EEPROM chip is connected
+    if LEDWavelength.value != 0:
+        print("EEPROM on LED detected.")
+        print("Connected LED:", (LEDName.value).decode(), ", serial number:", (LEDSerialNumber.value).decode(),", wavelength [nm]:",LEDWavelength.value)
+        print("max LED current [A]:", LEDCurrentLimit.value, ", max forward voltage [V]:", LEDForwardVoltage.value)
+        print()
+        #Set the current setpoint in Ampere to 10% of the current limit of this LED.
+        currentSetpoint = c_double((0.1) * LEDCurrentLimit.value)
+        lib.TLUP_setLedCurrentSetpoint(upHandle,currentSetpoint)
+        time.sleep(1)
+        lib.TLUP_getLedCurrentSetpoint(upHandle,0, byref(currentSetpoint))
+        print("LED current set to [A]:", currentSetpoint.value)
+        print()
 
+    #else section: LED without EEPROM chip is connected
+    else:
+        print("No EEPROM on LED detected.")
+        #Ask user to enter LED current setpoint and check if input is correct.
+        try:
+            currentSetpoint = c_double(0.001 * float(input("Please enter LED current setpoint in mA: ")))
+        except:
+            print("Error: Incorrect input. Please do not use letters, only use numbers.")
+            print("Code will be stopped.")
+            exit()
+        lib.TLUP_setLedCurrentSetpoint(upHandle, currentSetpoint)
+        print("LED current set to", currentSetpoint.value*1000, "mA.")            
+
+    
     #Switch the LED on, wait for 2 sec, then switch it off again.
     lib.TLUP_switchLedOutput(upHandle,1)
     print("Switch LED on.")
@@ -111,41 +134,12 @@ elif (modelName.value).decode() == "upTEMP":
         byref(steinhartHartParameterC), byref(steinhartHartParameterD),
         byref(steinhartHartParameterE), byref(steinhartHartParameterF))
 
-    """#Get possible temperature ranges for these Steinhart-Hart-Parameters.
-    minimumRanges = (c_double*8)()
-    maximumRanges = (c_double*8)()
-    lib.TLUP_getTemperatureRangesFromSteinhartHartParameters(
-        upHandle,
-        steinhartHartParameterA, steinhartHartParameterB,
-        steinhartHartParameterC, steinhartHartParameterD,
-        steinhartHartParameterE, steinhartHartParameterF,
-        minimumRanges, maximumRanges)
-
-    for r in range(8):
-        print("Range", r+1, "minimum:", minimumRanges[r], "maximum:", maximumRanges[r])
-
-    print()"""
-
     #Channel 1 is configured with the calculated Steinhart-Hart coefficients.
     CH1 = c_int(1)
     lib.TLUP_setThermSensConfig(upHandle, CH1, c_int(3),
                                 steinhartHartParameterA, steinhartHartParameterB,
                                 steinhartHartParameterC, steinhartHartParameterD,
                                 steinhartHartParameterE, steinhartHartParameterF)
-
-    """#Channel list is created and enabled.
-    on = c_ubyte(1)
-    off = c_ubyte(0)
-    chanList = (c_ubyte*8)()
-    chanList[0] = on
-    chanList[1] = off
-    chanList[2] = off
-    chanList[3] = off
-    chanList[4] = off
-    chanList[5] = off
-    chanList[6] = off
-    chanList[7] = off
-    lib.TLUP_setMeasChanList(upHandle, chanList)"""
 
     #Temperature measurements are enabled.
     lib.TLUP_setTempMeasurementState(upHandle, c_int(1))
