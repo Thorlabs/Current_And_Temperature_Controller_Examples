@@ -1,5 +1,5 @@
 # Current_And_Temperature_Controller_Examples
-Software examples for Thorlabs current drivers (DC2200, CLD1010LP, CLD1011LP, CLD1015) and temperature drivers/monitors (TSP01).   
+Software examples for Thorlabs current drivers (CLD1010LP, CLD1011LP, CLD1015), LED drivers (DC2200, upLED), and temperature drivers/monitors (TSP01, upTEMP).   
 
 ## Repo Organization
 All examples are split up by programming language and product type. Directions on using specific examples are given within the folders.
