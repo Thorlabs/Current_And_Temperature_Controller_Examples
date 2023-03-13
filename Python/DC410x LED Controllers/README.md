@@ -19,9 +19,9 @@ The FTDI driver for virtual COM port needs to be installed on the computer to us
 Within the firmware of the DC4100/DC4104, the following commands can be used directly through the COM port. Commands having the field <ch> need to have the channel number specified by a number comprised between 0 and 3. <ch++> means that one can also use the value ‐1 to act on all channels.
 
 A list of the commands and descriptions for them can be found below:
-
+```
 - CC <ch><int>  Sets a constant current value in milliamp. The value can be between 0 and 1000
-- CC? <ch>      Reads out and return the set current value
+- CC? <ch>  Reads out and return the set current value
 - L <ch><int> Sets a current limit value in milliamp. The value can be between 0 and 1000
 - L? <ch> Reads out and return the set current limit value
 - BP <ch++><float> Sets the brightness in %. The value can be comprised between 0.0 and 100.0
@@ -51,3 +51,4 @@ A list of the commands and descriptions for them can be found below:
 - FB? <ch> Reads out and return the <ch> forward voltage of the connected LED
 - SM <int> Sets the saftey mode to „ON“ or „OFF“.
 - SM? Reads out and return the safety mode settin
+```
