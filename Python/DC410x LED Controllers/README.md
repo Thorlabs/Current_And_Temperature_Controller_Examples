@@ -8,17 +8,17 @@ Please note that the COM port in the sample code needs to be changed for the COM
 
 ## Serial Commands for the DC410x Controllers
 
-Commands for the serial communication fort he DC4100/DC4104
+The FTDI driver for virtual COM port needs to be installed on the computer to use serial commands. This should normally be automatically installed when the software provided wit the DC4100/DC4104 is installed. If the driver is not used, the communication over the COM port of the FTDI driver needs to be manually configured:
 
-The FTDI driver for virtual COM port has to be installed on the computer. This should normally be automatically installed when the software provided wit the DC4100/DC4104 is installed. Should one decide not use our driver, the communication over the COM port of the FTDI driver needs to be manually configured.
+- Baudrate 115200
+- 8 Databits
+- No Parity
+- 1 Stopbit
+- Hardware
 
-Baudrate 11520, 8 Databits, No Parity, 1 Stopbit, Hardware
+Within the firmware of the DC4100/DC4104, the following commands can be used directly through the COM port. Commands having the field <ch> need to have the channel number specified by a number comprised between 0 and 3. <ch++> means that one can also use the value ‐1 to act on all channels.
 
-Within the firmware of the DC4100/DC4104, the following commands can be used directly through
-the COM port
-Commands having the field <ch> need to have the channel number specified by a number comprised
-between 0 and 3. <ch++> means that one can also use the value ‐1 to act on all channels
-command Description
+A list of the commands and descriptions for them can be found below:
 
 - CC <ch><int>  Sets a constant current value in milliamp. The value can be between 0 and 1000
 - CC? <ch>      Reads out and return the set current value
