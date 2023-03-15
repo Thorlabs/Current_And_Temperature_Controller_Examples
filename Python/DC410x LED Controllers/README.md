@@ -38,9 +38,11 @@ A list of the commands and descriptions for them can be found below:
 - BP? <ch>
   Reads out and return the brightness valule
 
-- O <ch++><int> Switches a given LED on and off. 0 means off and 1 means on.
+- O <ch++><int>
+  Switches a given LED on and off. 0 means off and 1 means on.
 
-- O? <ch> Reads out and retunrs the on/off state of a LED
+- O? <ch>
+  Reads out and retunrs the on/off state of a LED
 
 - A <ch++><int>
   Locks or unlocks a LED. 1 means that the LED is unlocked and 0 that it is locked
