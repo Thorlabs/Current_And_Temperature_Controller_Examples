@@ -20,35 +20,90 @@ Within the firmware of the DC4100/DC4104, the following commands can be used dir
 
 A list of the commands and descriptions for them can be found below:
 ```
-- CC <ch><int>  Sets a constant current value in milliamp. The value can be between 0 and 1000
-- CC? <ch>  Reads out and return the set current value
-- L <ch><int> Sets a current limit value in milliamp. The value can be between 0 and 1000
-- L? <ch> Reads out and return the set current limit value
-- BP <ch++><float> Sets the brightness in %. The value can be comprised between 0.0 and 100.0
-- BP? <ch> Reads out and return the brightness valule
+- CC <ch><int>
+  Sets a constant current value in milliamp. The value can be between 0 and 1000
+  
+- CC? <ch>
+  Reads out and return the set current value
+
+- L <ch><int>
+  Sets a current limit value in milliamp. The value can be between 0 and 1000
+
+- L? <ch>
+  Reads out and return the set current limit value
+
+- BP <ch++><float>
+  Sets the brightness in %. The value can be comprised between 0.0 and 100.0
+
+- BP? <ch>
+  Reads out and return the brightness valule
+
 - O <ch++><int> Switches a given LED on and off. 0 means off and 1 means on.
+
 - O? <ch> Reads out and retunrs the on/off state of a LED
-- A <ch++><int> Locks or unlocks a LED. 1 means that the LED is unlocked and 0 that it is locked
-- A? <ch> Reads out and returns the lock/unlock state of a LED
-- B <int> Sets the display brightness in %. The values are comprised between 0 and 100
-- B? Reads out and retunrs the display brightness in %
-- R? Reads and returns the status register
-- N? Reads and returns the device name
-- S? Reads and returns the device serial number
-- ML <ch><int> Sets a maximum current limit value in milliamp. The value can be between 0 and 1000
-- ML? <ch> Reads out and return the set maximum current limit value.
-- V? Reads out and return the firmware version
-- M <int> Sets the operation mode. 0 means constant current, 1 means constant birghtness and 2 means external control mode
-- M? Reads out and return the actual operation mode
-- H? Reads out and return the manufacturer name
-- E? Reads out and return the alst error corde  
+
+- A <ch++><int>
+  Locks or unlocks a LED. 1 means that the LED is unlocked and 0 that it is locked
+
+- A? <ch>
+  Reads out and returns the lock/unlock state of a LED
+
+- B <int>
+  Sets the display brightness in %. The values are comprised between 0 and 100
+
+- B?
+  Reads out and retunrs the display brightness in %
+
+- R?
+  Reads and returns the status register
+  
+- N?
+  Reads and returns the device name
+  
+- S?
+  Reads and returns the device serial number
+
+- ML <ch><int>
+  Sets a maximum current limit value in milliamp. The value can be between 0 and 1000
+
+- ML? <ch>
+  Reads out and return the set maximum current limit value.
+
+- V?
+  Reads out and return the firmware version
+
+- M <int>
+  Sets the operation mode. 0 means constant current, 1 means constant birghtness and 2 means external control mode
+
+- M?
+  Reads out and return the actual operation mode
+
+- H?
+  Reads out and return the manufacturer name
+
+- E?
+  Reads out and return the alst error corde  
   Format:  ERROR <num>:text
   example: ERROR 0:No Error.
-- HS? <ch> Reads out and return the serial number of the connected LED
-- HN? <ch> Reads out and return the name of the connected LED
-- CD? Reads out and return the calibration date
-- WL? <ch> Reads out and return the <ch> wavelength of the connected LED
-- FB? <ch> Reads out and return the <ch> forward voltage of the connected LED
-- SM <int> Sets the saftey mode to „ON“ or „OFF“.
-- SM? Reads out and return the safety mode settin
+
+- HS? <ch>
+  Reads out and return the serial number of the connected LED
+
+- HN? <ch>
+  Reads out and return the name of the connected LED
+
+- CD?
+  Reads out and return the calibration date
+
+- WL? <ch>
+  Reads out and return the <ch> wavelength of the connected LED
+
+- FB? <ch>
+  Reads out and return the <ch> forward voltage of the connected LED
+
+- SM <int>
+  Sets the saftey mode to „ON“ or „OFF“.
+
+- SM?
+  Reads out and return the safety mode settin
 ```
