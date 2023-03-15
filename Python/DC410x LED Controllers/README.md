@@ -16,7 +16,15 @@ The FTDI driver for virtual COM port needs to be installed on the computer to us
 - 1 Stopbit
 - Hardware
 
-Within the firmware of the DC4100/DC4104, the following commands can be used directly through the COM port. Commands having the field <ch> need to have the channel number specified by a number comprised between 0 and 3. <ch++> means that one can also use the value ‐1 to act on all channels.
+Within the firmware of the DC4100/DC4104, the following commands can be used directly through the COM port. Commands having the field &lt;ch&gt; need to have the channel number specified by a number comprised between 0 and 3. <ch++> means that one can also use the value ‐1 to act on all channels.
+
+E.g. the command
+```
+O? 0
+```
+will return the on/off state of channel 0 which is the channel for LED 1.
+
+## List of Commands
 
 A list of the commands and descriptions for them can be found below:
 ```
