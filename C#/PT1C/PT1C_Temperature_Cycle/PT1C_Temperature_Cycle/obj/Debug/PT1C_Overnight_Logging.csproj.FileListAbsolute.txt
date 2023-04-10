@@ -1,0 +1,11 @@
+C:\Users\manzelmi\source\repos\PT1C_Overnight_Logging\PT1C_Overnight_Logging\bin\Debug\PT1C_Overnight_Logging.exe.config
+C:\Users\manzelmi\source\repos\PT1C_Overnight_Logging\PT1C_Overnight_Logging\bin\Debug\PT1C_Overnight_Logging.exe
+C:\Users\manzelmi\source\repos\PT1C_Overnight_Logging\PT1C_Overnight_Logging\bin\Debug\PT1C_Overnight_Logging.pdb
+C:\Users\manzelmi\source\repos\PT1C_Overnight_Logging\PT1C_Overnight_Logging\bin\Debug\Thorlabs.TLPM_64.Interop.dll
+C:\Users\manzelmi\source\repos\PT1C_Overnight_Logging\PT1C_Overnight_Logging\bin\Debug\Thorlabs.TLPM_64.Interop.xml
+C:\Users\manzelmi\source\repos\PT1C_Overnight_Logging\PT1C_Overnight_Logging\obj\Debug\PT1C_Overnight_Logging.csproj.AssemblyReference.cache
+C:\Users\manzelmi\source\repos\PT1C_Overnight_Logging\PT1C_Overnight_Logging\obj\Debug\PT1C_Overnight_Logging.csproj.SuggestedBindingRedirects.cache
+C:\Users\manzelmi\source\repos\PT1C_Overnight_Logging\PT1C_Overnight_Logging\obj\Debug\PT1C_Overnight_Logging.csproj.CoreCompileInputs.cache
+C:\Users\manzelmi\source\repos\PT1C_Overnight_Logging\PT1C_Overnight_Logging\obj\Debug\PT1C_Overnight_Logging.csproj.CopyComplete
+C:\Users\manzelmi\source\repos\PT1C_Overnight_Logging\PT1C_Overnight_Logging\obj\Debug\PT1C_Overnight_Logging.exe
+C:\Users\manzelmi\source\repos\PT1C_Overnight_Logging\PT1C_Overnight_Logging\obj\Debug\PT1C_Overnight_Logging.pdb
