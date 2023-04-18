@@ -2,7 +2,7 @@
 
 ## ITC40x Compact Laser Diode Controller Open and Control
 
-This sample code shows how you can control a Thorlabs ITC laser diode controller in Python. It uses the CTypes library
+This sample code shows how you can control a Thorlabs ITC laser diode controller in Python. It uses the CTypes library that has to be installed on the computer.
 
 Please note that the resource name (“USB0::0x1313::…”) in the sample code needs to be adjusted to the used controller type and unit.
 
