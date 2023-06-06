@@ -1,5 +1,6 @@
 #Tested with MTD415T, MTDEVAL1,TECF2S,TH10K
 import pyvisa
+import sys
 import time
 def main():
     rm = pyvisa.ResourceManager()
