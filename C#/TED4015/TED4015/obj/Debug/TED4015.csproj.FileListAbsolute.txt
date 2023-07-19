@@ -1,0 +1,33 @@
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\global software (local)\TED4015\ConsoleApp1\bin\Debug\TED4015.exe.config
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\global software (local)\TED4015\ConsoleApp1\bin\Debug\TED4015.exe
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\global software (local)\TED4015\ConsoleApp1\bin\Debug\TED4015.pdb
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\global software (local)\TED4015\ConsoleApp1\bin\Debug\Thorlabs.TL4000.dll
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\global software (local)\TED4015\ConsoleApp1\bin\Debug\Thorlabs.TL4000.xml
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\global software (local)\TED4015\ConsoleApp1\obj\Debug\TED4015.csproj.AssemblyReference.cache
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\global software (local)\TED4015\ConsoleApp1\obj\Debug\TED4015.csproj.SuggestedBindingRedirects.cache
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\global software (local)\TED4015\ConsoleApp1\obj\Debug\TED4015.csproj.CoreCompileInputs.cache
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\global software (local)\TED4015\ConsoleApp1\obj\Debug\TED4015.csproj.CopyComplete
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\global software (local)\TED4015\ConsoleApp1\obj\Debug\TED4015.exe
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\global software (local)\TED4015\ConsoleApp1\obj\Debug\TED4015.pdb
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\global software (local)\TED4015 v2\ConsoleApp1\bin\Debug\TED4015.exe.config
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\global software (local)\TED4015 v2\ConsoleApp1\bin\Debug\TED4015.exe
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\global software (local)\TED4015 v2\ConsoleApp1\bin\Debug\TED4015.pdb
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\global software (local)\TED4015 v2\ConsoleApp1\bin\Debug\Thorlabs.TL4000.dll
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\global software (local)\TED4015 v2\ConsoleApp1\bin\Debug\Thorlabs.TL4000.xml
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\global software (local)\TED4015 v2\ConsoleApp1\obj\Debug\TED4015.csproj.AssemblyReference.cache
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\global software (local)\TED4015 v2\ConsoleApp1\obj\Debug\TED4015.csproj.SuggestedBindingRedirects.cache
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\global software (local)\TED4015 v2\ConsoleApp1\obj\Debug\TED4015.csproj.CoreCompileInputs.cache
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\global software (local)\TED4015 v2\ConsoleApp1\obj\Debug\TED4015.csproj.CopyComplete
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\global software (local)\TED4015 v2\ConsoleApp1\obj\Debug\TED4015.exe
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\global software (local)\TED4015 v2\ConsoleApp1\obj\Debug\TED4015.pdb
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\GitHub\Current_And_Temperature_Controller_Examples\C#\TED4015\TED4015\bin\Debug\TED4015.exe.config
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\GitHub\Current_And_Temperature_Controller_Examples\C#\TED4015\TED4015\bin\Debug\TED4015.exe
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\GitHub\Current_And_Temperature_Controller_Examples\C#\TED4015\TED4015\bin\Debug\TED4015.pdb
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\GitHub\Current_And_Temperature_Controller_Examples\C#\TED4015\TED4015\bin\Debug\Thorlabs.TL4000.dll
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\GitHub\Current_And_Temperature_Controller_Examples\C#\TED4015\TED4015\bin\Debug\Thorlabs.TL4000.xml
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\GitHub\Current_And_Temperature_Controller_Examples\C#\TED4015\TED4015\obj\Debug\TED4015.csproj.AssemblyReference.cache
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\GitHub\Current_And_Temperature_Controller_Examples\C#\TED4015\TED4015\obj\Debug\TED4015.csproj.SuggestedBindingRedirects.cache
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\GitHub\Current_And_Temperature_Controller_Examples\C#\TED4015\TED4015\obj\Debug\TED4015.csproj.CoreCompileInputs.cache
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\GitHub\Current_And_Temperature_Controller_Examples\C#\TED4015\TED4015\obj\Debug\TED4015.csproj.CopyComplete
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\GitHub\Current_And_Temperature_Controller_Examples\C#\TED4015\TED4015\obj\Debug\TED4015.exe
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\GitHub\Current_And_Temperature_Controller_Examples\C#\TED4015\TED4015\obj\Debug\TED4015.pdb
