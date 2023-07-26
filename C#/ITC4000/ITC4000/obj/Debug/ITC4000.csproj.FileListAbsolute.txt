@@ -1,0 +1,11 @@
+C:\Users\gboedecker\source\repos\ITC4000\ITC4000\bin\Debug\ITC4000.exe.config
+C:\Users\gboedecker\source\repos\ITC4000\ITC4000\bin\Debug\ITC4000.exe
+C:\Users\gboedecker\source\repos\ITC4000\ITC4000\bin\Debug\ITC4000.pdb
+C:\Users\gboedecker\source\repos\ITC4000\ITC4000\bin\Debug\Thorlabs.TL4000.dll
+C:\Users\gboedecker\source\repos\ITC4000\ITC4000\bin\Debug\Thorlabs.TL4000.xml
+C:\Users\gboedecker\source\repos\ITC4000\ITC4000\obj\Debug\ITC4000.csproj.AssemblyReference.cache
+C:\Users\gboedecker\source\repos\ITC4000\ITC4000\obj\Debug\ITC4000.csproj.SuggestedBindingRedirects.cache
+C:\Users\gboedecker\source\repos\ITC4000\ITC4000\obj\Debug\ITC4000.csproj.CoreCompileInputs.cache
+C:\Users\gboedecker\source\repos\ITC4000\ITC4000\obj\Debug\ITC4000.csproj.CopyComplete
+C:\Users\gboedecker\source\repos\ITC4000\ITC4000\obj\Debug\ITC4000.exe
+C:\Users\gboedecker\source\repos\ITC4000\ITC4000\obj\Debug\ITC4000.pdb

@@ -1,0 +1,3809 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Thorlabs.TL4000</name>
+    </assembly>
+    <members>
+        <member name="M:Thorlabs.TL4000.TL4000.#ctor(System.IntPtr)">
+            <summary>
+            This function creates an IVI instrument driver session, typically using the C session instrument handle.
+            </summary>
+            <param name="Instrument_Handle">
+            The instrument handle that is used to create an IVI instrument driver session.
+            </param>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.#ctor(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            This function initializes the instrument driver session and performs the following initialization actions:
+            
+            (1) Opens a session to the Default Resource Manager resource and a session to the specified device using the Resource Name  specified.
+            (2) Performs an identification query on the instrument.
+            (3) Resets the instrument to a known state.
+            (4) Sends initialization commands to the instrument.
+            (5) Returns an instrument handle which is used to distinguish between different sessions of this instrument driver.
+            
+            Note:
+            Each time this function is invoked a unique session is opened.  
+            </summary>
+            <param name="Resource_Name">
+            This parameter specifies the device that is to be initialized (Resource Name). 
+            The syntax for this parameter is:
+            TED4000(DFU): USB0::0x1313::0x8040::DEVICE-SERIAL-NUMBER::INSTR
+            TED4000     : USB0::0x1313::0x8048::DEVICE-SERIAL-NUMBER::INSTR
+            LDC4000(DFU): USB0::0x1313::0x8041::DEVICE-SERIAL-NUMBER::INSTR
+            LDC4000     : USB0::0x1313::0x8049::DEVICE-SERIAL-NUMBER::INSTR
+            ITC4000(DFU): USB0::0x1313::0x8042::DEVICE-SERIAL-NUMBER::INSTR
+            ITC4000     : USB0::0x1313::0x804A::DEVICE-SERIAL-NUMBER::INSTR
+            CLD1000(DFU): USB0::0x1313::0x8047::DEVICE-SERIAL-NUMBER::INSTR
+            CLD1000     : USB0::0x1313::0x804F::DEVICE-SERIAL-NUMBER::INSTR
+            
+            For remote VISA sessions use. 
+            VISA://HOSTNAME[:PORT]/ as a prefix. Where HOSTNAME is the name of the machine running the VISA server and PORT is the TCP port of the VISA server.
+            
+            Note: 
+            You may use VISA &lt;Find Resources&gt; to get the Resource Name for your device. Use the search patterns below for &lt;Find Resources&gt;.
+            TED4000: USB?*INSTR{VI_ATTR_MANF_ID==0x1313 &amp;&amp; (VI_ATTR_MODEL_CODE==0x8040 || VI_ATTR_MODEL_CODE==0x8048)}
+            LDC4000: USB?*INSTR{VI_ATTR_MANF_ID==0x1313 &amp;&amp; (VI_ATTR_MODEL_CODE==0x8041 || VI_ATTR_MODEL_CODE==0x8049)}
+            ITC4000: USB?*INSTR{VI_ATTR_MANF_ID==0x1313 &amp;&amp; (VI_ATTR_MODEL_CODE==0x8042 || VI_ATTR_MODEL_CODE==0x804A)}
+            
+            </param>
+            <param name="ID_Query">
+            This parameter specifies whether an identification query is performed during the initialization process.
+            
+            VI_OFF (0): Skip query.
+            VI_ON  (1): Do query (default).
+            
+            </param>
+            <param name="Reset_Device">
+            This parameter specifies whether the instrument is reset during the initialization process.
+            
+            VI_OFF (0) - no reset 
+            VI_ON  (1) - instrument is reset (default)
+            
+            </param>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setLdOperatingMode(System.Int16)">
+            <summary>
+            This function sets the instruments laser diode operating mode.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Laser_Diode_Operating_Mode">
+            This parameter specifies the LD source operating mode.
+            
+            Acceptable values:
+              TL4000_LD_OPMODE_CC     (0): constant current CW mode
+              TL4000_LD_OPMODE_CP     (1): constant power CW mode
+            
+            </param>
+            <returns>
+            This value shows the status code returned by the function call.
+            
+            For Status Codes see function &lt;Error Message&gt;.
+            
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getLdOperatingMode(System.Int16@)">
+            <summary>
+            This function returns the instruments laser diode operating mode.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Laser_Diode_Operating_Mode">
+            This parameter returns the laser diode operating mode.
+            
+            Return values:
+              TL4000_LD_OPMODE_CC     (0): constant current CW mode
+              TL4000_LD_OPMODE_CP     (1): constant power CW mode
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setLdCurrLimit(System.Double)">
+            <summary>
+            This function sets the laser diode current limit.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Laser_Diode_Current_Limit">
+            This parameter specifies the laser diode current limit value in Amperes.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getLdCurrLimit(System.Int16,System.Double@)">
+            <summary>
+            This function returns the laser diode current limit setting.
+            
+            Note: This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+            
+            </param>
+            <param name="Laser_Diode_Current_Limit">
+            This parameter returns the laser diode current limit value in Amperes.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.isTrippedLdCurrLimit(System.Boolean@)">
+            <summary>
+            This function returns the state of the Laser diode current limit circuit.
+            
+            Note: This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Tripped">
+            This parameter returns the limit state.
+            
+            Return values:
+              VI_OFF (0): Limit is not tripped.
+              VI_ON  (1): Limit is tripped.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setLdOptPowLimit(System.Double)">
+            <summary>
+            This function sets the laser diode optical power limit. Depending on the power loop feedback source setting this function also affects the photodiode current limit setting or the thermopile voltage limit setting.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Optical_Power_Limit">
+            This parameter specifies the laser diode optical power limit in Watts.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getLdOptPowLimit(System.Int16,System.Double@)">
+            <summary>
+            This function returns the laser diode power setpoint in constant power CW mode.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+            
+            </param>
+            <param name="Optical_Power_Limit">
+            This parameter returns the laser diode optical power limit setting in Watts.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.isTrippedLdOptPowLimit(System.Boolean@)">
+            <summary>
+            This function returns the state of the Laser diode optical power limit circuit.
+            
+            Note: This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Tripped">
+            This parameter returns the limit state.
+            
+            Return values:
+              VI_OFF (0): Limit is not tripped.
+              VI_ON  (1): Limit is tripped.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setPdCurrLimit(System.Double)">
+            <summary>
+            This function sets the photodiode current limit. Depending on the power loop feedback source setting this function also affects the laser diode optical power limit setting.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Photodiode_Current_Limit">
+            This parameter specifies the photodiode current limit value in Amperes.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getPdCurrLimit(System.Int16,System.Double@)">
+            <summary>
+            This function returns the photodiode current limit setting.
+            
+            Note: This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+            
+            </param>
+            <param name="Photodiode_Current_Limit">
+            This parameter returns the photodiode current limit value in Amperes.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setTpVoltLimit(System.Double)">
+            <summary>
+            This function sets the thermopile voltage limit value. Depending on the power loop feedback source setting this function also affects the laser diode optical power limit setting.
+            
+            Note: This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Thermopile_Voltage_Limit">
+            This parameter specifies the thermopile voltage limit in Volts.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getTpVoltLimit(System.Int16,System.Double@)">
+            <summary>
+            This function returns the thermopile voltage limit setting.
+            
+            Note: This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+            
+            </param>
+            <param name="Thermopile_Voltage_Limit">
+            This parameter returns the thermopile voltage limit in Volts.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setLdCurrSetpoint(System.Double)">
+            <summary>
+            This function sets the laser diode current setpoint in constant current CW mode and in constant current QCW mode.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Laser_Diode_Current_Setpoint">
+            This parameter specifies the laser diode current setpoint in Amperes.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getLdCurrSetpoint(System.Int16,System.Double@)">
+            <summary>
+            This function returns the laser diode current setpoint in constant current CW mode and in constant current QCW mode.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+            
+            </param>
+            <param name="Laser_Diode_Current_Setpoint">
+            This parameter returns the laser diode current setpoint in Amperes.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setLdOptPowSetpoint(System.Double)">
+            <summary>
+            This function sets the laser diode optical power setpoint in constant power CW mode.
+            
+            Note: This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Optical_Power_Setpoint">
+            This parameter specifies the laser diode optical power setpoint in Watts.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getLdOptPowSetpoint(System.Int16,System.Double@)">
+            <summary>
+            This function returns the laser diode optical power setpoint in constant power CW mode.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+            
+            </param>
+            <param name="Optical_Power_Setpoint">
+            This parameter returns the laser diode optical power setpoint in Watts.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setPdCurrSetpoint(System.Double)">
+            <summary>
+            This function sets the photodiode current setpoint in constant power CW mode.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Photodiode_Current_Setpoint">
+            This parameter specifies the photodiode current setpoint in Amperes.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getPdCurrSetpoint(System.Int16,System.Double@)">
+            <summary>
+            This function returns the photodiode current setpoint in constant power CW mode.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+            
+            </param>
+            <param name="Photodiode_Current_Setpoint">
+            This parameter returns the photodiode current setpoint in Amperes.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setTpVoltSetpoint(System.Double)">
+            <summary>
+            This function sets the thermopile voltage setpoint in constant power CW mode.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Thermopile_Voltage_Setpoint">
+            This parameter specifies the thermopile voltage setpoint in Volts.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getTpVoltSetpoint(System.Int16,System.Double@)">
+            <summary>
+            This function returns the thermopile voltage setpoint in constant power CW mode.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+            
+            </param>
+            <param name="Thermopile_Voltage_Setpoint">
+            This parameter returns the thermopile voltage setpoint in Volts.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setPowerModeFbSrc(System.Int16)">
+            <summary>
+            This function sets the instrument's power mode feedback source.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Power_Mode_Feedback_Source">
+            This parameter specifies the LDC power mode feedback source.
+            
+            Acceptable values:
+              TL4000_LDC_FEEDBACK_SRC_PD (0): photodiode (current) feedback
+              TL4000_LDC_FEEDBACK_SRC_TP (1): thermopile (voltage) feedback 
+            
+            </param>
+            <returns>
+            This value shows the status code returned by the function call.
+            
+            For Status Codes see function &lt;Error Message&gt;.
+            
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getPowerModeFbSrc(System.Int16@)">
+            <summary>
+            This function returns the power mode feedback source.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Power_Mode_Feedback_Source">
+            This parameter returns the LDC power mode feedback source.
+            
+            Return values:
+              TL4000_LDC_FEEDBACK_SRC_PD (0): photodiode (current) feedback
+              TL4000_TEC_FEEDBACK_SRC_TP (1): thermopile (voltage) feedback 
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setPowerModeFbSpeed(System.Double)">
+            <summary>
+            This function sets the power mode feedback speed.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Speed_Setting">
+            This parameter specifies the power mode feedback speed setting in percent.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getPowerModeFbSpeed(System.Int16,System.Double@)">
+            <summary>
+            This function returns the power mode feedback speed.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+              TL4000_ATTR_DFLT_VAL (3): Default value
+            
+            </param>
+            <param name="Speed_Setting">
+            This parameter returns the power mode feedback speed setting in percent.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.switchQcwMode(System.Boolean)">
+            <summary>
+            This function switches the QCW mode on/off.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="QCW_Mode">
+            This parameter specifies the QCW mode state. 
+            
+            VI_OFF (0): QCW mode off (default).
+            VI_ON  (1): QCW mode on.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getQcwModeState(System.Boolean@)">
+            <summary>
+            This function returns the state of the QCW mode.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="QCW_Mode_State">
+            This parameter returns the QCW mode state.
+            
+            Return values:
+              VI_OFF (0): QCW mode is switched off.
+              VI_ON  (1): QCW mode is switched on.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setQCWPulsePeriod(System.Double)">
+            <summary>
+            This function sets the QCW pulse period.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Pulse_Period">
+            This parameter specifies the QCW pulse period in seconds.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getQCWPulsePeriod(System.Int16,System.Double@)">
+            <summary>
+            This function returns the QCW pulse period.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+              TL4000_ATTR_DFLT_VAL (3): Default value
+            
+            </param>
+            <param name="Pulse_Period">
+            This parameter returns the QCW pulse period in seconds.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setQCWPulseWidth(System.Double)">
+            <summary>
+            This function sets the QCW pulse width.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Pulse_Width">
+            This parameter specifies the QCW pulse width in seconds.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getQCWPulseWidth(System.Int16,System.Double@)">
+            <summary>
+            This function returns the QCW pulse width.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+              TL4000_ATTR_DFLT_VAL (3): Default value
+            
+            </param>
+            <param name="Pulse_Width">
+            This parameter returns the QCW pulse width in seconds.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setQCWPulseDutyCycle(System.Double)">
+            <summary>
+            This function sets the QCW pulse duty cycle.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Duty_Cycle">
+            This parameter specifies the QCW pulse duty cycle in percent.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getQCWPulseDutyCycle(System.Int16,System.Double@)">
+            <summary>
+            This function returns the QCW pulse duty cycle.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+              TL4000_ATTR_DFLT_VAL (3): Default value
+            
+            </param>
+            <param name="Duty_Cycle">
+            This parameter returns the QCW pulse duty cycle in percent.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setQCWHoldParam(System.Int16)">
+            <summary>
+            This function sets, for a pulsed waveform, the parameter to be held constant when the period changes.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Hold_Parameter">
+            This parameter specifies for a pulsed waveform, the parameter to be held constant when the period changes.
+            
+            Acceptable values:
+              TL4000_PULSEHOLD_WIDTH   (0): pulse width held constant
+              TL4000_PULSEHOLD_DCYC    (1): duty cycle held constant
+            
+            </param>
+            <returns>
+            This value shows the status code returned by the function call.
+            
+            For Status Codes see function &lt;Error Message&gt;.
+            
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getQCWHoldParam(System.Int16@)">
+            <summary>
+            This function returns, for a pulsed waveform, the parameter  held constant when the period changes.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Hold_Parameter">
+            This parameter returns, for a pulsed waveform, the parameter  held constant when the period changes.
+            
+            Return values:
+              TL4000_PULSEHOLD_WIDTH   (0): pulse width held constant
+              TL4000_PULSEHOLD_DCYC    (1): duty cycle held constant
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setQCWTrigSrc(System.Int16)">
+            <summary>
+            This function sets the trigger source for constant current QCW mode.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Trigger_Source">
+            This parameter specifies the trigger source for constant current QCW mode.
+            
+            Acceptable values:
+              TL4000_PULSE_TRIGSRC_INT (0): internal trigger
+              TL4000_PULSE_TRIGSRC_EXT (1): external trigger
+            
+            </param>
+            <returns>
+            This value shows the status code returned by the function call.
+            
+            For Status Codes see function &lt;Error Message&gt;.
+            
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getQCWTrigSrc(System.Int16@)">
+            <summary>
+            This function returns the trigger source for constant current QCW mode
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Trigger_Source">
+            This parameter returns the trigger source for constant current QCW mode.
+            
+            Return values:
+              TL4000_PULSE_TRIGSRC_INT (0): internal trigger
+              TL4000_PULSE_TRIGSRC_EXT (1): external trigger
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.switchModulation(System.Boolean)">
+            <summary>
+            This function switches the modulation on/off.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Modulation_State">
+            This parameter specifies the modulation state. 
+            
+            VI_OFF (0): modulation off (default).
+            VI_ON  (1): modulation on.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getModState(System.Boolean@)">
+            <summary>
+            This function returns the state of the modulation.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Modulation_State">
+            This parameter returns the modulation state.
+            
+            Return values:
+              VI_OFF (0): modulation is switched off.
+              VI_ON  (1): modulation is switched on.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setModSource(System.Int16)">
+            <summary>
+            This function selects the modulation source.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Source">
+            This parameter specifies the modulation source.
+            
+            Acceptable values:
+              TL4000_MODSRC_INT     (0): internal modulation
+              TL4000_MODSRC_EXT     (1): external BNC modulation input
+              TL4000_MODSRC_INT_EXT (2): both modulation sources
+            
+            </param>
+            <returns>
+            This value shows the status code returned by the function call.
+            
+            For Status Codes see function &lt;Error Message&gt;.
+            
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getModSource(System.Int16@)">
+            <summary>
+            This function returns the selected modulation source.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Source">
+            This parameter returns the modulation source.
+            
+            Return values:
+              TL4000_MODSRC_INT     (0): internal modulation
+              TL4000_MODSRC_EXT     (1): external BNC modulation input
+              TL4000_MODSRC_INT_EXT (2): both modulation sources
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setModShape(System.Int16)">
+            <summary>
+            This function selects the shape of the internal modulation source.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Shape">
+            This parameter specifies the shape.
+            
+            Acceptable values:
+              TL4000_MODSHAPE_SINE     (0): sinusoid
+              TL4000_MODSHAPE_TRIANGLE (1): triangle
+              TL4000_MODSHAPE_SQUARE   (2): square
+            
+            </param>
+            <returns>
+            This value shows the status code returned by the function call.
+            
+            For Status Codes see function &lt;Error Message&gt;.
+            
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getModShape(System.Int16@)">
+            <summary>
+            This function returns the shape setting of the internal modulation source.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Shape">
+            This parameter returns the shape.
+            
+            Return values:
+              TL4000_MODSHAPE_SINE     (0): sinusoid
+              TL4000_MODSHAPE_TRIANGLE (1): triangle
+              TL4000_MODSHAPE_SQUARE   (2): square
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setModFreq(System.Double)">
+            <summary>
+            This function sets the frequency of the internal modulation source.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Frequency">
+            This parameter specifies the frequency in Hertz.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getModFreq(System.Int16,System.Double@)">
+            <summary>
+            This function returns the frequency setting of the internal modulation source.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+              TL4000_ATTR_DFLT_VAL (3): Default value
+            
+            </param>
+            <param name="Frequency">
+            This parameter returns the frequency in Hertz.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setModDepth(System.Double)">
+            <summary>
+            This function sets the depth of the internal modulation source.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Depth">
+            This parameter specifies the depth in percent.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getModDepth(System.Int16,System.Double@)">
+            <summary>
+            This function returns the depth setting of the internal modulation source.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+              TL4000_ATTR_DFLT_VAL (3): Default value
+            
+            </param>
+            <param name="Depth">
+            This parameter returns the depth in percent.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setLdPolarity(System.Int16)">
+            <summary>
+            This function selects the polarity of the laser diode output.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Polarity">
+            This parameter specifies the polarity.
+            
+            Acceptable values:
+              TL4000_POL_CG   (0): cathode grounded (CG)
+              TL4000_POL_AG   (1): anode grounded (AG)
+            
+            </param>
+            <returns>
+            This value shows the status code returned by the function call.
+            
+            For Status Codes see function &lt;Error Message&gt;.
+            
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getLdPolarity(System.Int16@)">
+            <summary>
+            This function returns the polarity setting of the laser diode output.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Polarity">
+            This parameter returns the polarity setting.
+            
+            Return values:
+              TL4000_POL_CG   (0): cathode grounded (CG)
+              TL4000_POL_AG   (1): anode grounded (AG)
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setLdOutputDelay(System.Double)">
+            <summary>
+            This function sets the laser output switch-on delay.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Delay">
+            This parameter specifies the laser output switch-on delay in seconds.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getLdOutputDelay(System.Int16,System.Double@)">
+            <summary>
+            This function returns the laser output switch-on delay settings.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+              TL4000_ATTR_DFLT_VAL (3): Default value
+            
+            </param>
+            <param name="Delay">
+            This parameter returns the laser output switch-on delay.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setLdOutputProtVolt(System.Double)">
+            <summary>
+            This function sets the laser output protection voltage.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Voltage">
+            This parameter specifies the laser output protection voltage in Volts.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getLdOutputProtVolt(System.Int16,System.Double@)">
+            <summary>
+            This function returns the laser output protection voltage settings.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+              TL4000_ATTR_DFLT_VAL (3): Default value
+            
+            </param>
+            <param name="Voltage">
+            This parameter returns the laser output protection voltage value.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setLdEnableMode(System.Int16)">
+            <summary>
+            This function selects the mode of the LD-ENABLE rear panel BNC input.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Mode">
+            This parameter specifies the mode of the protection signal.
+            
+            Acceptable values:
+              TL4000_MODE_DISABLED      (0): Disabled (No function)
+              TL4000_MODE_OUTPUT_ENABLE (1): acts as LD output enable
+              TL4000_MODE_PROTECTION    (2): switches LD output off
+            
+            </param>
+            <returns>
+            This value shows the status code returned by the function call.
+            
+            For Status Codes see function &lt;Error Message&gt;.
+            
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getLdEnableMode(System.Int16@)">
+            <summary>
+            This function returns the mode of the LD-ENABLE rear panel BNC input.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Mode">
+            This parameter returns the mode of the protection signal.
+            
+            Return values:
+              TL4000_MODE_DISABLED      (0): Disabled (No function)
+              TL4000_MODE_OUTPUT_ENABLE (1): acts as LD output enable
+              TL4000_MODE_PROTECTION    (2): switches LD output off
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.switchLdOutpLpFltr(System.Boolean)">
+            <summary>
+            This function switches the laser diode output low pass filter on/off.
+            
+            Note: 
+            This function is valid for: CLD1000, LDC4000, ITC4000. 
+            On instruments which are not equipped with a laser diode output low pass filter this function returns VI_ERROR_NSUP_OPER as return value.
+            </summary>
+            <param name="Filter_State">
+            This parameter specifies the filter state. 
+            
+            VI_OFF (0): Low pass filter off.
+            VI_ON  (1): Low pass filter on (default).
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getLdOutpLpFltrState(System.Boolean@)">
+            <summary>
+            This function returns the state of the laser diode output low pass filter.
+            
+            Note: 
+            This function is valid for: CLD1000, LDC4000, ITC4000
+            </summary>
+            <param name="Filter_State">
+            This parameter returns the laser diode output low pass filter state.
+            
+            Return values:
+              VI_OFF (0): Low pass filter off.
+              VI_ON  (1): Low pass filter on.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setLdOutpAutoOnState(System.Boolean)">
+            <summary>
+            This function sets the state of the laser output auto-on feature.
+            
+            Note: 
+            This function is valid for: CLD1000
+            </summary>
+            <param name="Auto_On">
+            This parameter specifies the state of the auto-on feature. 
+            
+            VI_OFF (0): Auto-on disabled (default).
+            VI_ON  (1): Auto-on enabled.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getLdOutpAutoOnState(System.Boolean@)">
+            <summary>
+            This function returns the state of the laser output auto-on feature.
+            
+            Note: 
+            This function is valid for: CLD1000
+            </summary>
+            <param name="Auto_On_State">
+            This parameter returns the state of the laser output auto-on feature.
+            
+            Return values:
+              VI_OFF (0): Auto-on disabled.
+              VI_ON  (1): Auto-on enabled.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setPdPolarity(System.Int16)">
+            <summary>
+            This function selects the polarity of the photodiode input.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000, CLD1000
+            On CLD1000 instruments which are not able to switch the photodiode input polarity this function returns VI_ERROR_NSUP_OPER as return value.
+            </summary>
+            <param name="Polarity">
+            This parameter specifies the polarity.
+            
+            Acceptable values:
+              TL4000_POL_CG   (0): cathode grounded (CG)
+              TL4000_POL_AG   (1): anode grounded (AG)
+            
+            </param>
+            <returns>
+            This value shows the status code returned by the function call.
+            
+            For Status Codes see function &lt;Error Message&gt;.
+            
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getPdPolarity(System.Int16@)">
+            <summary>
+            This function returns the polarity setting of the photodiode input.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Polarity">
+            This parameter returns the polarity setting.
+            
+            Return values:
+              TL4000_POL_CG   (0): cathode grounded (CG)
+              TL4000_POL_AG   (1): anode grounded (AG)
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setPdRange(System.Double)">
+            <summary>
+            This function sets the photodiode input current range.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Range">
+            This parameter specifies the expected photodiode current in Amperes [A].
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getPdRange(System.Int16,System.Double@)">
+            <summary>
+            This function returns the photodiode input current range.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+            
+            </param>
+            <param name="Range">
+            This parameter returns the photodiode input current range in Amperes.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.switchPdBIAS(System.Boolean)">
+            <summary>
+            This function switches the photodiode BIAS on/off.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="BIAS_State">
+            This parameter specifies the photodiode BIAS state. 
+            
+            VI_OFF (0): BIAS off (default).
+            VI_ON  (1): BIAS on.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getPdBIASState(System.Boolean@)">
+            <summary>
+            This function returns the state of the photodiode BIAS.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="BIAS_State">
+            This parameter returns the photodiode BIAS state.
+            
+            Return values:
+              VI_OFF (0): BIAS is switched off.
+              VI_ON  (1): BIAS is switched on.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setPdBIASVolt(System.Double)">
+            <summary>
+            This function sets the photodiode BIAS voltage level.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="BIAS_Voltage">
+            This parameter specifies the photodoide BIAS voltage in Volts.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getPdBIASVolt(System.Int16,System.Double@)">
+            <summary>
+            This function returns the photodiode BIAS voltage settings.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+              TL4000_ATTR_DFLT_VAL (3): Default value
+            
+            </param>
+            <param name="BIAS_Voltage">
+            This parameter returns the photodiode BIAS voltage in Volts.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setPdInpTerminals(System.Int16)">
+            <summary>
+            This function selects the terminals of the photodiode input.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Terminals">
+            This parameter specifies the terminals.
+            
+            Acceptable values:
+              TL4000_TERM_DSUB   (0): D-SUB connector
+              TL4000_TERM_BNC    (1): rear panel BNC connector
+            
+            </param>
+            <returns>
+            This value shows the status code returned by the function call.
+            
+            For Status Codes see function &lt;Error Message&gt;.
+            
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getPdInpTerminals(System.Int16@)">
+            <summary>
+            This function returns the terminals setting of the photodiode input.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Terminals">
+            This parameter returns the selected terminals.
+            
+            Return values:
+              TL4000_TERM_DSUB   (0): D-SUB connector
+              TL4000_TERM_BNC    (1): rear panel BNC connector
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setPdResponsivity(System.Double)">
+            <summary>
+            This function sets the photodiode responsivity.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Responsivity">
+            This parameter specifies the photodiode responsivity in Amperes per Watt [A/W].
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getPdResponsivity(System.Int16,System.Double@)">
+            <summary>
+            This function returns the photodiode responsivity.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+              TL4000_ATTR_DFLT_VAL (3): Default value
+            
+            </param>
+            <param name="Responsivity">
+            This parameter returns the specified photodiode responsivity in Amperes per Watt [A/W].
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setTpRange(System.Double)">
+            <summary>
+            This function sets the thermopile input voltage range.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Range">
+            This parameter specifies the expected thermopile voltage in Volts [V].
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getTpRange(System.Int16,System.Double@)">
+            <summary>
+            This function returns the thermopile input voltage range.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+            
+            </param>
+            <param name="Range">
+            This parameter returns the thermopile input voltage range in Volts.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setTpInpTerminals(System.Int16)">
+            <summary>
+            This function selects the terminals of the thermopile input.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Terminals">
+            This parameter specifies the terminals.
+            
+            Acceptable values:
+              TL4000_TERM_DSUB   (0): D-SUB connector
+              TL4000_TERM_BNC    (1): rear panel BNC connector
+            
+            </param>
+            <returns>
+            This value shows the status code returned by the function call.
+            
+            For Status Codes see function &lt;Error Message&gt;.
+            
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getTpInpTerminals(System.Int16@)">
+            <summary>
+            This function returns the terminals setting of the thermopile input.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Terminals">
+            This parameter returns the selected terminals.
+            
+            Return values:
+              TL4000_TERM_DSUB   (0): D-SUB connector
+              TL4000_TERM_BNC    (1): rear panel BNC connector
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setTpResponsivity(System.Double)">
+            <summary>
+            This function sets the thermopile responsivity.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Responsivity">
+            This parameter specifies the thermopile responsivity in Volts per Watt [V/W].
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getTpResponsivity(System.Int16,System.Double@)">
+            <summary>
+            This function returns the thermopile responsivity.
+            
+            Note: 
+            This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+              TL4000_ATTR_DFLT_VAL (3): Default value
+            
+            </param>
+            <param name="Responsivity">
+            This parameter returns the specified thermopile responsivity in Volts per Watt [V/W].
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setTecOperatingMode(System.Int16)">
+            <summary>
+            This function sets the instrument's TEC source operating mode.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="TEC_Operating_Mode">
+            This parameter specifies the TEC source operating mode.
+            
+            Acceptable values:
+              TL4000_TEC_OPMODE_CS (0): current source mode
+              TL4000_TEC_OPMODE_CT (1): constant temperature mode
+            
+            </param>
+            <returns>
+            This value shows the status code returned by the function call.
+            
+            For Status Codes see function &lt;Error Message&gt;.
+            
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getTecOperatingMode(System.Int16@)">
+            <summary>
+            This function returns the instrument's TEC source operating mode.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="TEC_Operating_Mode">
+            This parameter returns the TEC source operating mode.
+            
+            Return values:
+              TL4000_TEC_OPMODE_CS (0): current source mode
+              TL4000_TEC_OPMODE_CT (1): constant temperature mode
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setTecCurrLimit(System.Double)">
+            <summary>
+            This function sets the peltier current limit.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="TEC_Current_Limit">
+            This parameter specifies the peltier current limit value in Amperes.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getTecCurrLimit(System.Int16,System.Double@)">
+            <summary>
+            This function returns the peltier current limit settings.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+            
+            </param>
+            <param name="TEC_Current_Limit">
+            This parameter returns the peltier current limit value in Amperes.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setTempSensor(System.Int16)">
+            <summary>
+            This function selects the temperature sensor.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000
+            </summary>
+            <param name="Sensor">
+            This parameter specifies the temperature sensor.
+            
+            Acceptable values:
+              TL4000_SENS_AD590   (0): AD590 sensor
+              TL4000_SENS_TH_LOW  (1): Thermistor (low range)
+              TL4000_SENS_TH_HIGH (2): Thermistor (high range)
+              TL4000_SENS_PT100   (3): PT100 RTD sensor
+              TL4000_SENS_PT1000  (4): PT1000 RTD sensor
+              TL4000_SENS_LM35    (5): LM35 sensor
+              TL4000_SENS_LM335   (6): LM335 sensor
+            
+            </param>
+            <returns>
+            This value shows the status code returned by the function call.
+            
+            For Status Codes see function &lt;Error Message&gt;.
+            
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getTempSensor(System.Int16@)">
+            <summary>
+            This function returns the selected temperature sensor.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000
+            </summary>
+            <param name="Sensor">
+            This parameter returns the selected temperature sensor.
+            
+            Return values:
+              TL4000_SENS_AD590   (0): AD590 sensor
+              TL4000_SENS_TH_LOW  (1): Thermistor (low range)
+              TL4000_SENS_TH_HIGH (2): Thermistor (high range)
+              TL4000_SENS_PT100   (3): PT100 RTD sensor
+              TL4000_SENS_PT1000  (4): PT1000 RTD sensor
+              TL4000_SENS_LM35    (5): LM35 sensor
+              TL4000_SENS_LM335   (6): LM335 sensor
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setTempSensOffset(System.Double)">
+            <summary>
+            This function sets the sensor's absolute temperature offset.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000
+            </summary>
+            <param name="Temperature_Offset">
+            This parameter specifies the temperature offset.
+            
+            Note: You may specify the unit for temperature with &lt;Set Temperature Unit&gt;.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getTempSensOffset(System.Int16,System.Double@)">
+            <summary>
+            This function returns the sensor's absolute temperature offset.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+            
+            </param>
+            <param name="Temperature_Offset">
+            This parameter returns the temperature offset.
+            
+            Note: You may specify the unit for temperature with &lt;Set Temperature Unit&gt;.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setThermistorMethod(System.Int16)">
+            <summary>
+            This function sets the thermistor temperature calculation method.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="Method">
+            This parameter specifies the calculation method.
+            
+            Acceptable values:
+              TL4000_THMETH_EXP (0): Exponential method
+              TL4000_THMETH_SHH (1): Method from Steinhart-Hart
+            
+            </param>
+            <returns>
+            This value shows the status code returned by the function call.
+            
+            For Status Codes see function &lt;Error Message&gt;.
+            
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getThermistorMethod(System.Int16@)">
+            <summary>
+            This function returns the thermistor temperature calculation method.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="Method">
+            This parameter returns the calculation method.
+            
+            Return values:
+              TL4000_THMETH_EXP (0): Exponential method
+              TL4000_THMETH_SHH (1): Method from Steinhart-Hart
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setThermistorExpParams(System.Double,System.Double,System.Double)">
+            <summary>
+            This function sets the thermistor exponential method parameters.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="R0_value">
+            This parameter specifies the R0 value.
+            
+            </param>
+            <param name="T0_value">
+            This parameter specifies the T0 value.
+            
+            </param>
+            <param name="Beta_value">
+            This parameter specifies the beta value.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getThermistorExpParams(System.Int16,System.Double@,System.Double@,System.Double@)">
+            <summary>
+            This function returns the thermistor exponential method parameters.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+              TL4000_ATTR_DFLT_VAL (3): Default value
+            
+            </param>
+            <param name="R0_Value">
+            This parameter returns the R0 value.
+            </param>
+            <param name="T0_Value">
+            This parameter returns the T0 value.
+            </param>
+            <param name="Beta_Value">
+            This parameter returns the beta value.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setThermistorShhParams(System.Double,System.Double,System.Double)">
+            <summary>
+            This function sets the thermistor Steinhart-Hart method parameters.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="A_value">
+            This parameter specifies the A value.
+            
+            </param>
+            <param name="B_value">
+            This parameter specifies the B value.
+            
+            </param>
+            <param name="C_value">
+            This parameter specifies the C value.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getThermistorShhParams(System.Int16,System.Double@,System.Double@,System.Double@)">
+            <summary>
+            This function returns the thermistor Steinhart-Hart method parameters.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+              TL4000_ATTR_DFLT_VAL (3): Default value
+            
+            </param>
+            <param name="A_Value">
+            This parameter returns the A value.
+            </param>
+            <param name="B_Value">
+            This parameter returns the B value.
+            </param>
+            <param name="C_Value">
+            This parameter returns the C value.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setTempSetpoint(System.Double)">
+            <summary>
+            This function sets the temperature setpoint in constant temperature operating mode.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            
+            </summary>
+            <param name="Temperature_Setpoint">
+            This parameter specifies the temperature setpoint.
+            
+            Note: You may specify the unit for temperature with &lt;Set Temperature Unit&gt;. The settable temperature range depends on the temperature sensor configuration. Use &lt;Get Temperature Setpoint&gt; to obtain the settable temperature range.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getTempSetpoint(System.Int16,System.Double@)">
+            <summary>
+            This function returns the temperature setpoint in constant temperature mode.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+            
+            </param>
+            <param name="Temperature_Setpoint">
+            This parameter returns the temperature setpoint.
+            
+            Note: You may specify the unit for temperature with &lt;Set Temperature Unit&gt;.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setTempSetpointLimits(System.Double,System.Double)">
+            <summary>
+            This function sets the user defined temperature setpoint limits.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="Setpoint_Low_Limit">
+            This parameter specifies the setpoint low limit value.
+            
+            Note: You may specify the unit for temperature with &lt;Set Temperature Unit&gt;.
+            
+            </param>
+            <param name="Setpoint_High_Limit">
+            This parameter specifies the setpoint high limit value.
+            
+            Note: You may specify the unit for temperature with &lt;Set Temperature Unit&gt;.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getTempSetpointLimits(System.Int16,System.Double@,System.Double@)">
+            <summary>
+            This function returns the user defined temperature setpoint low limit.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+            
+            </param>
+            <param name="Setpoint_Low_Limit">
+            This parameter returns the user defined temperature setpoint low limit.
+            
+            Note: You may specify the unit for temperature with &lt;Set Temperature Unit&gt;.
+            
+            </param>
+            <param name="Setpoint_High_Limit">
+            This parameter returns the user defined temperature setpoint high limit.
+            
+            Note: You may specify the unit for temperature with &lt;Set Temperature Unit&gt;.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setPidParams(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            This function sets the constant temperature mode PID control loop parameters.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="P_Share">
+            This parameter specifies the P share value (gain) in Amperes per Kelvin [A/K].
+            
+            </param>
+            <param name="I_Share">
+            This parameter specifies the I share value (integral) in Amperes and seconds per Kelvin [As/K].
+            </param>
+            <param name="D_Share">
+            This parameter specifies the D share value (derivative) in Amperes per Kelvin and seconds [A/Ks].
+            
+            </param>
+            <param name="Period">
+            This parameter specifies thermal load oscillation period in seconds [s].
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getPidParams(System.Int16,System.Double@,System.Double@,System.Double@,System.Double@)">
+            <summary>
+            This function returns the PID control loop parameters.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+              TL4000_ATTR_DFLT_VAL (3): Default value
+            
+            </param>
+            <param name="P_Share">
+            This parameter returns the P share value (gain) in Amperes per Kelvin [A/K].
+            </param>
+            <param name="I_Share">
+            This parameter returns the I share value (integral) in Amperes and seconds per Kelvin [As/K].
+            </param>
+            <param name="D_Share">
+            This parameter returns the D share value (derivative) in Amperes per Kelvin and seconds [A/Ks].
+            </param>
+            <param name="Period">
+            This parameter returns the thermal load oscillation period in seconds [s].
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setTecCurrSetpoint(System.Double)">
+            <summary>
+            This function sets the peltier current in current source operating mode.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            
+            </summary>
+            <param name="TEC_Current_Setpoint">
+            This parameter specifies the peltier current in Amperes.
+            
+            Note: The settable current range depends in the current limit setting. See also &lt;Get TEC Current Limit&gt; for details.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getTecCurrSetpoint(System.Int16,System.Double@)">
+            <summary>
+            This function returns the peltier current setpoint in current  source mode.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+            
+            </param>
+            <param name="TEC_Current_Setpoint">
+            This parameter returns the peltier current setpoint in Ampere.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setTempProtWindow(System.Double)">
+            <summary>
+            This function sets the temperature protection window span.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="Window">
+            This parameter specifies the temperature protection window value.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getTempProtWindow(System.Int16,System.Double@)">
+            <summary>
+            This function returns the temperature protection window setting.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+              TL4000_ATTR_DFLT_VAL (3): Default value
+            
+            </param>
+            <param name="Window">
+            This parameter returns the temperature protection window span.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setTempProtDelay(System.Double)">
+            <summary>
+            This function sets the temperature protection delay time.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="Delay">
+            This parameter specifies the temperature protection delay time in seconds [s].
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getTempProtDelay(System.Int16,System.Double@)">
+            <summary>
+            This function returns the temperature protection delay time.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="Attribute">
+            This parameter specifies the value to be queried.
+            
+            Acceptable values:
+              TL4000_ATTR_SET_VAL  (0): Set value
+              TL4000_ATTR_MIN_VAL  (1): Minimum value
+              TL4000_ATTR_MAX_VAL  (2): Maximum value
+              TL4000_ATTR_DFLT_VAL (3): Default value
+            
+            </param>
+            <param name="Delay">
+            This parameter returns the temperature protection delay time in seconds [s].
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setTempProtMode(System.Int16)">
+            <summary>
+            This function selects the mode of the temperature protection signal.
+            
+            Note: 
+            This function is valid for: ITC4000, CLD1000
+            </summary>
+            <param name="Mode">
+            This parameter specifies the mode of the protection signal.
+            
+            Acceptable values:
+              TL4000_MODE_DISABLED      (0): Disabled (No function)
+              TL4000_MODE_OUTPUT_ENABLE (1): acts as LD output enable
+              TL4000_MODE_PROTECTION    (2): switches LD output off
+            
+            </param>
+            <returns>
+            This value shows the status code returned by the function call.
+            
+            For Status Codes see function &lt;Error Message&gt;.
+            
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getTempProtMode(System.Int16@)">
+            <summary>
+            This function returns the mode of the temperature protection signal.
+            
+            Note: 
+            This function is valid for: ITC4000, CLD1000
+            </summary>
+            <param name="Mode">
+            This parameter returns the mode of the protection signal.
+            
+            Return values:
+              TL4000_MODE_DISABLED      (0): Disabled (No function)
+              TL4000_MODE_OUTPUT_ENABLE (1): acts as LD output enable
+              TL4000_MODE_PROTECTION    (2): switches LD output off
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setTecOutpAutoOnState(System.Boolean)">
+            <summary>
+            This function sets the state of the TEC output auto-on feature.
+            
+            Note: 
+            This function is valid for: CLD1000
+            </summary>
+            <param name="Auto_On">
+            This parameter specifies the state of the auto-on feature. 
+            
+            VI_OFF (0): Auto-on disabled (default).
+            VI_ON  (1): Auto-on enabled.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getTecOutpAutoOnState(System.Boolean@)">
+            <summary>
+            This function returns the state of the TEC output auto-on feature.
+            
+            Note: 
+            This function is valid for: CLD1000
+            </summary>
+            <param name="Auto_On_State">
+            This parameter returns the state of the laser output auto-on feature.
+            
+            Return values:
+              VI_OFF (0): Auto-on disabled.
+              VI_ON  (1): Auto-on enabled.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setTecOutpVoltageProtMode(System.Int16)">
+            <summary>
+            This function selects the mode of the TEC output voltage protection signal.
+            
+            Note: 
+            This function is valid for: CLD1000 (Firmware V1.1.2 or higher)
+            </summary>
+            <param name="Mode">
+            This parameter specifies the mode of the protection signal.
+            
+            Acceptable values:
+              TL4000_MODE_DISABLED      (0): Disabled (No function)
+              TL4000_MODE_PROTECTION    (2): switches TEC output off
+            
+            </param>
+            <returns>
+            This value shows the status code returned by the function call.
+            
+            For Status Codes see function &lt;Error Message&gt;.
+            
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getTecOutpVoltageProtMode(System.Int16@)">
+            <summary>
+            This function returns the mode of the TEC output voltage protection signal.
+            
+            Note: 
+            This function is valid for: CLD1000 (Firmware V1.1.2 or higher)
+            </summary>
+            <param name="Mode">
+            This parameter returns the mode of the protection signal.
+            
+            Return values:
+              TL4000_MODE_DISABLED      (0): Disabled (No function)
+              TL4000_MODE_PROTECTION    (2): switches TEC output off
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setDispBrightness(System.Double)">
+            <summary>
+            This function sets the display brightness.
+            
+            Note: 
+            This function is valid for: TED4000, LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Brightness">
+            This parameter specifies the display brightness.
+            
+            Range   : 0.0 .. 1.0
+            Default : 1.0
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getDispBrightness(System.Double@)">
+            <summary>
+            This function returns the display brightness.
+            
+            Note: 
+            This function is valid for: TED4000, LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Brightness">
+            This parameter returns the display brightness (0..1).
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setDispAutoDimmState(System.Boolean)">
+            <summary>
+            This function sets the state of the display brightness auto-dimm feature.
+            
+            Note: 
+            This function is valid for: CLD1000
+            </summary>
+            <param name="Auto_Dimm">
+            This parameter specifies the state of the auto-dimm feature. 
+            
+            VI_OFF (0): Auto-dimm disabled (default).
+            VI_ON  (1): Auto-dimm enabled.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getDispAutoDimmState(System.Boolean@)">
+            <summary>
+            This function returns the state of the display brightness auto-dimm feature.
+            
+            Note: 
+            This function is valid for: CLD1000
+            </summary>
+            <param name="Auto_Dimm_State">
+            This parameter returns the state of the auto-dimm feature.
+            
+            Return values:
+              VI_OFF (0): Auto-dimm disabled.
+              VI_ON  (1): Auto-dimm enabled.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setDispContrast(System.Double)">
+            <summary>
+            This function sets the display contrast.
+            
+            Note: 
+            This function is valid for: TED4000, LDC4000, ITC4000
+            </summary>
+            <param name="Contrast">
+            This parameter specifies the display contrast.
+            
+            Range   : 0.0 .. 1.0
+            Default : 0.5
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getDispContrast(System.Double@)">
+            <summary>
+            This function returns the display contrast.
+            
+            Note: 
+            This function is valid for: TED4000, LDC4000, ITC4000
+            </summary>
+            <param name="Contrast">
+            This parameter returns the display contrast (0..1).
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setLineFreq(System.Int16)">
+            <summary>
+            This function selects the instrument's line frequency setting.
+            
+            Note: 
+            This function is valid for: TED4000, LDC4000, ITC4000
+            </summary>
+            <param name="Line_Frequency">
+            Specifies the line frequency setting.
+            
+            Acceptable values: 
+              TL4000_LFR_AUTO  (0): Automatic detection
+              TL4000_LFR_50HZ  (1): 50Hz
+              TL4000_LFR_60HZ  (2): 60Hz
+            
+            </param>
+            <returns>
+            This value shows the status code returned by the function call.
+            
+            For Status Codes see function &lt;Error Message&gt;.
+            
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getLineFreq(System.Int16@)">
+            <summary>
+            This function returns the instrument's line frequency setting.
+            
+            Note: 
+            This function is valid for: TED4000, LDC4000, ITC4000
+            </summary>
+            <param name="Line_Frequency">
+            This parameter returns the line frequency setting.
+            
+            Return values are: 
+              TL4000_LFR_AUTO  (0): Automatic detection
+              TL4000_LFR_50HZ  (1): 50Hz
+              TL4000_LFR_60HZ  (2): 60Hz
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setTempUnit(System.Int16)">
+            <summary>
+            This function selects the unit used for temperature readings and settings.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="Temperature_Unit">
+            Sets the unit for temperature.
+            
+            Acceptable values: 
+              TL4000_U_CELS   (0): Celsius
+              TL4000_U_KELVIN (1): Kelvin
+              TL4000_U_FAHREN (2): Fahrenheit
+            
+            </param>
+            <returns>
+            This value shows the status code returned by the function call.
+            
+            For Status Codes see function &lt;Error Message&gt;.
+            
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getTempUnit(System.Int16@)">
+            <summary>
+            This function returns the selected unit for temperature.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="Temperature_Unit">
+            This parameter returns the selected unit for temperature.
+            
+            Return values are: 
+              TL4000_U_CELS   (0): Celsius
+              TL4000_U_KELVIN (1): Kelvin
+              TL4000_U_FAHREN (2): Fahrenheit
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.writeRegister(System.Int16,System.Int16)">
+            <summary>
+            This function writes the content of any writable instrument register. 
+            
+            Refer to your instrument's SCPI programmer's reference manual for more details on status structure registers.
+            
+            </summary>
+            <param name="Register_ID">
+            Specifies the register to be used for operation. This parameter can be any of the following constants:
+            
+              TL4000_REG_SRE         (1): Service Request Enable
+              TL4000_REG_ESE         (3): Standard Event Enable
+              TL4000_REG_OPER_ENAB   (6): Operation Event Enable Register
+              TL4000_REG_OPER_PTR    (7): Operation Positive Transition
+              TL4000_REG_OPER_NTR    (8): Operation Negative Transition
+              TL4000_REG_QUES_ENAB  (11): Questionable Event Enable Reg.
+              TL4000_REG_QUES_PTR   (12): Questionable Positive Transition
+              TL4000_REG_QUES_NTR   (13): Questionable Negative Transition
+              TL4000_REG_MEAS_ENAB  (16): Measurement Event Enable Register
+              TL4000_REG_MEAS_PTR   (17): Measurement Positive Transition
+              TL4000_REG_MEAS_NTR   (18): Measurement Negative Transition
+              TL4000_REG_AUX_ENAB   (21): Auxiliary Event Enable Register
+              TL4000_REG_AUX_PTR    (22): Auxiliary Positive Transition
+              TL4000_REG_AUX_NTR    (23): Auxiliary Negative Transition 
+            
+            </param>
+            <param name="Value">
+            This parameter specifies the register value.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.readRegister(System.Int16,System.Int16@)">
+            <summary>
+            This function reads the content of any readable instrument register. 
+            
+            Refer to your instrument's SCPI programmer's reference manual for more details on status structure registers.
+            
+            </summary>
+            <param name="Register_ID">
+            Specifies the register to be used for operation. This parameter can be any of the following constants:
+            
+              TL4000_REG_STB         (0): Status Byte Register
+              TL4000_REG_SRE         (1): Service Request Enable
+              TL4000_REG_ESB         (2): Standard Event Status Register
+              TL4000_REG_ESE         (3): Standard Event Enable
+              TL4000_REG_OPER_COND   (4): Operation Condition Register
+              TL4000_REG_OPER_EVENT  (5): Operation Event Register
+              TL4000_REG_OPER_ENAB   (6): Operation Event Enable Register
+              TL4000_REG_OPER_PTR    (7): Operation Positive Transition
+              TL4000_REG_OPER_NTR    (8): Operation Negative Transition
+              TL4000_REG_QUES_COND   (9): Questionable Condition Register
+              TL4000_REG_QUES_EVENT (10): Questionable Event Register
+              TL4000_REG_QUES_ENAB  (11): Questionable Event Enable Reg.
+              TL4000_REG_QUES_PTR   (12): Questionable Positive Transition
+              TL4000_REG_QUES_NTR   (13): Questionable Negative Transition
+              TL4000_REG_MEAS_COND  (14): Measurement Condition Register
+              TL4000_REG_MEAS_EVENT (15): Measurement Event Register
+              TL4000_REG_MEAS_ENAB  (16): Measurement Event Enable Register
+              TL4000_REG_MEAS_PTR   (17): Measurement Positive Transition
+              TL4000_REG_MEAS_NTR   (18): Measurement Negative Transition
+              TL4000_REG_AUX_COND   (19): Auxiliary Condition Register
+              TL4000_REG_AUX_EVENT  (20): Auxiliary Event Register
+              TL4000_REG_AUX_ENAB   (21): Auxiliary Event Enable Register
+              TL4000_REG_AUX_PTR    (22): Auxiliary Positive Transition
+              TL4000_REG_AUX_NTR    (23): Auxiliary Negative Transition 
+            
+            </param>
+            <param name="Value">
+            This parameter returns the register value.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.switchLdOutput(System.Boolean)">
+            <summary>
+            This function switches the LD output on/off.
+            
+            Note: This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="LD_Output">
+            This parameter specifies the LD output state. 
+            
+            VI_OFF (0): Output off (default).
+            VI_ON  (1): Output on.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getLdOutputState(System.Boolean@)">
+            <summary>
+            This function returns the state of the LD output.
+            
+            Note: This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="LD_Output">
+            This parameter returns the LD output state.
+            
+            Return values:
+              VI_OFF (0): Output is switched off.
+              VI_ON  (1): Output is switched on.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.isTrippedLdOutputProtInterlock(System.Boolean@)">
+            <summary>
+            This function returns the state of the LD output interlock protection circuit.
+            
+            Note: This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Tripped">
+            This parameter returns the protection state.
+            
+            Return values:
+              VI_OFF (0): Protection is not tripped.
+              VI_ON  (1): Protection is tripped.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.isTrippedLdOutputProtEnable(System.Boolean@)">
+            <summary>
+            This function returns the state of the LD output enable (rear panel BNC connector) protection.
+            
+            Note: This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Tripped">
+            This parameter returns the protection state.
+            
+            Return values:
+              VI_OFF (0): Protection is not tripped.
+              VI_ON  (1): Protection is tripped.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.isTrippedLdOutputProtKeylock(System.Boolean@)">
+            <summary>
+            This function returns the state of the LD output front panel key switch protection.
+            
+            Note: This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Tripped">
+            This parameter returns the protection state.
+            
+            Return values:
+              VI_OFF (0): Protection is not tripped.
+              VI_ON  (1): Protection is tripped.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.isTrippedLdOutputProtTemperature(System.Boolean@)">
+            <summary>
+            This function returns the state of the LD output temperature protection. See &lt;Set Temperature Protection Mode&gt; for details.
+            
+            Note: 
+            This function is valid for: ITC4000, CLD1000
+            </summary>
+            <param name="Tripped">
+            This parameter returns the protection state.
+            
+            Return values:
+              VI_OFF (0): Protection is not tripped.
+              VI_ON  (1): Protection is tripped.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.isTrippedLdOutputProtOvertemp(System.Boolean@)">
+            <summary>
+            This function returns the state of the LD output overtemperature protection.
+            
+            Note: This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Tripped">
+            This parameter returns the protection state.
+            
+            Return values:
+              VI_OFF (0): Protection is not tripped.
+              VI_ON  (1): Protection is tripped.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.isTrippedLdOutputProtVolt(System.Boolean@)">
+            <summary>
+            This function returns the state of the LD output voltage protection circuit.
+            
+            Note: This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Tripped">
+            This parameter returns the photodiode BIAS state.
+            
+            Return values:
+              VI_OFF (0): BIAS is switched off.
+              VI_ON  (1): BIAS is switched on.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getTecOutputState(System.Boolean@)">
+            <summary>
+            This function returns the state of the TEC output.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="TEC_Output">
+            This parameter returns the TEC output state.
+            
+            Return values:
+              VI_OFF (0): Output is switched off.
+              VI_ON  (1): Output is switched on.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.switchTecOutput(System.Boolean)">
+            <summary>
+            This function switches the TEC output on/off.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="TEC_Output">
+            This parameter specifies the TEC output state. 
+            
+            VI_OFF (0): Output off (default).
+            VI_ON  (1): Output on.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.isTrippedTecOutputProtCable(System.Boolean@)">
+            <summary>
+            This function returns the state of the TEC output cable connection failure protection circuit.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000
+            </summary>
+            <param name="Tripped">
+            This parameter returns the protection state.
+            
+            Return values:
+              VI_OFF (0): Protection is not tripped.
+              VI_ON  (1): Protection is tripped.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.isTrippedTecOutputProtTransducer(System.Boolean@)">
+            <summary>
+            This function returns the state of the TEC output temperature sensor failure protection.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="Tripped">
+            This parameter returns the protection state.
+            
+            Return values:
+              VI_OFF (0): Protection is not tripped.
+              VI_ON  (1): Protection is tripped.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.isTrippedTecOutputProtOvertemp(System.Boolean@)">
+            <summary>
+            This function returns the state of the TEC output overtemperature protection.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="Tripped">
+            This parameter returns the protection state.
+            
+            Return values:
+              VI_OFF (0): Protection is not tripped.
+              VI_ON  (1): Protection is tripped.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.isTrippedTecOutputProtVoltage(System.Boolean@)">
+            <summary>
+            This function returns the state of the TEC output voltage protection.
+            
+            Note: 
+            This function is valid for: CLD1000 (firmware V1.1.2 or higher)
+            </summary>
+            <param name="Tripped">
+            This parameter returns the protection state.
+            
+            Return values:
+              VI_OFF (0): Protection is not tripped.
+              VI_ON  (1): Protection is tripped.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.startAutoPid">
+            <summary>
+            This function starts the PID Auto-Tune procedure.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000
+            </summary>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.cancelAutoPid">
+            <summary>
+            This function cancels a currently running PID Auto-Tune procedure. It has no effect if PID Auto-Tune is not running.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000
+            </summary>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getAutoPidState(System.Int16@,System.Int16@,System.Int16@)">
+            <summary>
+            This function returns the state of a currently running PID Auto-Tune procedure.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000
+            </summary>
+            <param name="State">
+            This parameter returns the PID Auto-Tune state.
+            
+            Possible return values are:
+            TL4000_AUTOPID_NEVER    (0) : Never run for this configuration
+            TL4000_AUTOPID_RUNNING  (1) : Auto-PID is currently running
+            TL4000_AUTOPID_CANCELED (2) : Canceled by user
+            TL4000_AUTOPID_FAILED   (3) : Auto-PID procedure failed
+            TL4000_AUTOPID_SUCCESS  (4) : Auto-PID finished successfully
+            
+            Note: You may pass VI_NULL if you don't need this value.
+            
+            </param>
+            <param name="Phase">
+            This parameter returns the PID  Auto-Tune phase. This value is useful in the TL4000_AUTOPID_RUNNING (1) state only.
+            
+            Note: You may pass VI_NULL if you don't need this value.
+            
+            </param>
+            <param name="Count">
+            This parameter returns the PID Auto-Tune loop count. This value is useful in the TL4000_AUTOPID_RUNNING (1) state only.
+            
+            Note: You may pass VI_NULL if you don't need this value.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getAutoPidParams(System.Double@,System.Double@,System.Double@,System.Double@)">
+            <summary>
+            This function returns the Auto-Tune PID control loop parameters.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000
+            </summary>
+            <param name="P_Share">
+            This parameter returns the P share value (gain) in Amperes per Kelvin [A/K].
+            </param>
+            <param name="I_Share">
+            This parameter returns the I share value (integral) in Amperes and seconds per Kelvin [As/K].
+            </param>
+            <param name="D_Share">
+            This parameter returns the D share value (derivative) in Amperes per Kelvin and seconds [A/Ks].
+            </param>
+            <param name="Period">
+            This parameter returns the thermal load oscillation period in seconds [s].
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.transferAutoPidParams">
+            <summary>
+            This function transfers the parameters evaluated during a PID Auto-Tune procedure to the PID control loop.
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000
+            </summary>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.measLdCurr(System.Double@)">
+            <summary>
+            This function performs a laser diode current measurement and retrieves the value from the instrument. 
+            
+            Note: This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Current">
+            This parameter returns the laser diode current in Amperes [A].
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.measLdVolt(System.Double@)">
+            <summary>
+            This function performs a laser diode voltage measurement and retrieves the value from the instrument. 
+            
+            Note: This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Voltage">
+            This parameter returns the laser diode voltage in Volts [V]. 
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.measLdPow(System.Double@)">
+            <summary>
+            This function performs a laser diode electrical power measurement and retrieves the value from the instrument. 
+            
+            Note: This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Power">
+            This parameter returns the laser diode electrical power in Watts [W].
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.measPdCurr(System.Double@)">
+            <summary>
+            This function performs a photodiode current measurement and retrieves the value from the instrument. 
+            
+            Note: This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Current">
+            This parameter returns the photodiode current in Amperes [A].
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.measTpVolt(System.Double@)">
+            <summary>
+            This function performs a thermopile/power meter input voltage measurement and retrieves the value from the instrument. 
+            
+            Note: This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Voltage">
+            This parameter returns the thermopile/power meter input voltage in Volts [V].
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.measLdOptPowPd(System.Double@)">
+            <summary>
+            This function performs a optical power measurement via the photodiode input and retrieves the value from the instrument. 
+            
+            Note: This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Optical_Power_Pd">
+            This parameter returns the optical power measured via the  photodiode input in Watts [W].
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.measLdOptPowTp(System.Double@)">
+            <summary>
+            This function performs a optical power measurement via the thermopile/power meter input and retrieves the value from the instrument. 
+            
+            Note: This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Optical_Power_Th">
+            This parameter returns the optical power measured via the  thermopile/power meter input in Watts [W].
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.measLdMultiple(System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@)">
+            <summary>
+            This function performs multiple simultaneous measurements and retrieves the values from the instrument. 
+            
+            Note: This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Laser_Current">
+            This parameter returns the laser diode current in Amperes [A].
+            
+            Note: You may pass VI_NULL if you do not need this value.
+            </param>
+            <param name="Laser_Voltage">
+            This parameter returns the laser diode voltage in Volts [V].
+            
+            Note: You may pass VI_NULL if you do not need this value.
+            
+            </param>
+            <param name="Power">
+            This parameter returns the laser diode electrical power in Watts [W].
+            </param>
+            <param name="Photodiode_Current">
+            This parameter returns the photodiode current in Amperes [A].
+            
+            Note: You may pass VI_NULL if you do not need this value.
+            
+            </param>
+            <param name="Optical_Power_Pd">
+            This parameter returns the optical power measured via the  photodiode input in Watts [W].
+            
+            Note: You may pass VI_NULL if you do not need this value.
+            
+            </param>
+            <param name="Thermopile_Voltage">
+            This parameter returns the thermopile/power meter input voltage in Volts [V].
+            
+            Note: You may pass VI_NULL if you do not need this value.
+            
+            </param>
+            <param name="Optical_Power_Th">
+            This parameter returns the optical power measured via the  thermopile/power meter input in Watts [W].
+            
+            Note: You may pass VI_NULL if you do not need this value.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.measTemp(System.Double@)">
+            <summary>
+            This function performs a temperature measurement and retrieves the value from the instrument. 
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="Temperature">
+            This parameter returns the temperature in the specified temperature unit. 
+            
+            Note: You may specify the unit for temperature with &lt;Set Temperature Unit&gt;.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.measTempSensor(System.Double@)">
+            <summary>
+            This function performs a temperature sensor signal measurement and retrieves the value from the instrument. 
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="Temperature_Sensor_Signal">
+            This parameter returns the temperature sensor signal.
+            
+            Note: For thermistors and RTD sensors the unit is Ohms. For ISS sensors (AD590) the unit is Amperes. For VSS sensors (LM35, LM335) the unit is Volts.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.measTecCurr(System.Double@)">
+            <summary>
+            This function performs a TEC element current measurement and retrieves the value from the instrument. 
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="TEC_Current">
+            This parameter returns the TEC element current in Amperes [A].
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.measTecVolt(System.Double@)">
+            <summary>
+            This function performs a TEC element voltage measurement and retrieves the value from the instrument. 
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000
+            </summary>
+            <param name="TEC_Voltage">
+            This parameter returns the TEC element voltage in Volts [V].
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.measTecPow(System.Double@)">
+            <summary>
+            This function performs a TEC element power measurement and retrieves the value from the instrument. 
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000
+            </summary>
+            <param name="TEC_Power">
+            This parameter returns the TEC element power in Watts [W].
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.configure(System.Int16)">
+            <summary>
+            This function is used to configure a measurement. I.e. set the parameter to be measured.
+            
+            Note: 
+            This function is valid for: TED4000, LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Parameter">
+            This parameter specifies the parameter to be measured.
+            
+            Values:
+            TL4000_MEAS_TEC_TEMP   (0)  - TEC temperature
+            TL4000_MEAS_TEC_CURR   (1)  - TEC current
+            TL4000_MEAS_TEC_VOLT   (2)  - TEC voltage
+            TL4000_MEAS_TEC_POW    (3)  - TEC electrical power
+            TL4000_MEAS_TEC_SENS   (4)  - TEC sensor
+            TL4000_MEAS_LD_CURR    (10) - Laser Diode current
+            TL4000_MEAS_LD_VOLT    (11) - Laser Diode voltage
+            TL4000_MEAS_LD_POW     (12) - Laser Diode electrical power
+            TL4000_MEAS_PD_CURR    (13) - Photodiode current
+            TL4000_MEAS_OPT_POW_PD (14) - optical power via photodiode
+            TL4000_MEAS_TP_VOLT    (15) - Thermopile/Power Meter voltage
+            TL4000_MEAS_OPT_POW_TP (16) - optical power via thermopile
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.initiate">
+            <summary>
+            This function is used to initiate measurements. 
+            
+            Note: 
+            This function is valid for: TED4000, LDC4000, ITC4000, CLD1000
+            </summary>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.abort">
+            <summary>
+            This function aborts a measurement in process.
+            
+            Note: 
+            This function is valid for: TED4000, LDC4000, ITC4000, CLD1000
+            </summary>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.fetchLdCurr(System.Double@)">
+            <summary>
+            This function is used to obtain laser diode current readings from the instrument. 
+            
+            Note: This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Current">
+            This parameter returns the laser diode current.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.fetchLdVolt(System.Double@)">
+            <summary>
+            This function is used to obtain laser diode current readings from the instrument. 
+            
+            Note: This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Voltage">
+            This parameter returns the laser diode voltage. 
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.fetchLdPow(System.Double@)">
+            <summary>
+            This function is used to obtain laser diode power dissipation  readings from the instrument. 
+            
+            Note: This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Power">
+            This parameter returns the laser diode electrical power.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.fetchPdCurr(System.Double@)">
+            <summary>
+            This function is used to obtain photodiode current readings from the instrument. 
+            
+            Note: This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Current">
+            This parameter returns the photodiode current.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.fetchTpVolt(System.Double@)">
+            <summary>
+            This function is used to obtain thermopile/power meter voltage  readings from the instrument. 
+            
+            Note: This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Voltage">
+            This parameter returns the thermopile/power meter voltage.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.fetchLdOptPowPd(System.Double@)">
+            <summary>
+            This function is used to obtain optical power readings from the instrument. 
+            
+            Note: This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Power">
+            This parameter returns the optical power measured by the photodiode.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.fetchLdOptPowTp(System.Double@)">
+            <summary>
+            This function is used to obtain optical power readings from the instrument. 
+            
+            Note: This function is valid for: LDC4000, ITC4000
+            </summary>
+            <param name="Power">
+            This parameter returns the optical power measured by thermopile/power meter.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.fetchLdMultiple(System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@)">
+            <summary>
+            This function is used to obtain all measured parameters of a LDC resp. LDC part of an ITC at once. These parameters are measured simultaneous at the instrument. 
+            
+            Note: This function is valid for: LDC4000, ITC4000, CLD1000
+            </summary>
+            <param name="Laser_Current">
+            This parameter returns the laser diode current.
+            
+            Note: You may pass VI_NULL if you do not need this value.
+            
+            </param>
+            <param name="Laser_Voltage">
+            This parameter returns the laser voltage.
+            
+            Note: You may pass VI_NULL if you do not need this value.
+            
+            </param>
+            <param name="Power">
+            This parameter returns the laser diode electrical input power.
+            </param>
+            <param name="Photodiode_Current">
+            This parameter returns the photodiode current.
+            
+            Note: You may pass VI_NULL if you do not need this value.
+            
+            </param>
+            <param name="Optical_Power_Pd">
+            This parameter returns the optical output power measured via  photodiode.
+            
+            Note: You may pass VI_NULL if you do not need this value.
+            
+            </param>
+            <param name="Thermopile_Voltage">
+            This parameter returns the thermopile/power meter voltage.
+            
+            Note: You may pass VI_NULL if you do not need this value.
+            
+            </param>
+            <param name="Optical_Power_Th">
+            This parameter returns the optical output power measured via  thermopile/power meter.
+            
+            Note: You may pass VI_NULL if you do not need this value.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.fetchTemp(System.Double@)">
+            <summary>
+            This function is used to obtain temperature readings from the instrument. 
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="Temperature">
+            This parameter returns the temperature. 
+            
+            Note: You may specify the unit for temperature with &lt;Set Temperature Unit&gt;.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.fetchTempSensor(System.Double@)">
+            <summary>
+            This function is used to obtain sensor signal readings from the instrument. 
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="Temperature_Sensor_Signal">
+            This parameter returns the temperature sensor signal.
+            
+            Note: For thermistors and RTD sensors the unit is Ohms. For ISS sensors (AD590) the unit is Amperes. For VSS sensors (LM35, LM335) the unit is Volts.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.fetchTecCurr(System.Double@)">
+            <summary>
+            This function is used to obtain TEC current readings from the instrument. 
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000, CLD1000
+            </summary>
+            <param name="TEC_Current">
+            This parameter returns the TEC current in Amperes.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.fetchTecVolt(System.Double@)">
+            <summary>
+            This function is used to obtain TEC voltage readings from the instrument. 
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000
+            </summary>
+            <param name="TEC_Voltage">
+            This parameter returns the TEC voltage in Volts.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.fetchTecPow(System.Double@)">
+            <summary>
+            This function is used to obtain TEC power readings from the instrument. 
+            
+            Note: 
+            This function is valid for: TED4000, ITC4000
+            </summary>
+            <param name="TEC_Power">
+            This parameter returns the TEC power in Watts.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.identificationQuery(System.Text.StringBuilder,System.Text.StringBuilder,System.Text.StringBuilder,System.Text.StringBuilder)">
+            <summary>
+            This function returns the device identification information.
+            </summary>
+            <param name="Manufacturer_Name">
+            This parameter returns the manufacturer name.
+            
+            Note: The array must contain at least 256 elements ViChar[256].  You may pass VI_NULL if you do not need this value.
+            
+            </param>
+            <param name="Device_Name">
+            This parameter returns the device name.
+            
+            Note: The array must contain at least 256 elements ViChar[256].  You may pass VI_NULL if you do not need this value.
+            
+            </param>
+            <param name="Serial_Number">
+            This parameter returns the device serial number.
+            
+            Note: The array must contain at least 256 elements ViChar[256]. You may pass VI_NULL if you do not need this value.
+            
+            </param>
+            <param name="Firmware_Revision">
+            This parameter returns the device firmware revision.
+            
+            Note: The array must contain at least 256 elements ViChar[256].  You may pass VI_NULL if you do not need this value.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.calibrationMessage(System.Text.StringBuilder)">
+            <summary>
+            This function returns a human readable calibration message.
+            
+            </summary>
+            <param name="Message">
+            This parameter returns the calibration message.
+            
+            Note:
+            The array must contain at least 256 elements ViChar[256].
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.reset">
+            <summary>
+            This function resets the device.
+            </summary>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.beep">
+            <summary>
+            This function generates a beep.
+            </summary>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.selfTest(System.Int16@,System.Text.StringBuilder)">
+            <summary>
+            This function runs the device self test routine and returns the test result.
+            </summary>
+            <param name="Self_Test_Result">
+            This parameter contains the value returned from the device self test routine. A returned zero value indicates a successful run, a value other than zero indicates failure.
+            </param>
+            <param name="Self_Test_Message">
+            This parameter returns the instrument's self test message.
+            
+            Notes: The array must contain at least 256 elements ViChar[256].
+            You may pass VI_NULL if you do not need this value.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.errorQuery(System.Int32@,System.Text.StringBuilder)">
+            <summary>
+            This function queries the instrument's error queue manually. 
+            Use this function to query the instrument's error queue if the driver's error query mode is set to manual query. 
+            
+            Note: The returned values are stored in the drivers error store. You may use &lt;Error Message&gt; to get a descriptive text at a later point of time.
+            </summary>
+            <param name="Error_Number">
+            This parameter returns the instrument error number.
+            
+            Note: You may pass VI_NULL if you don't need this value.
+            
+            </param>
+            <param name="Error_Message">
+            This parameter returns the instrument error message.
+            
+            Notes: The array must contain at least 256 elements ViChar[256].
+            You may pass VI_NULL if you do not need this value.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.revisionQuery(System.Text.StringBuilder,System.Text.StringBuilder)">
+            <summary>
+            This function returns the revision numbers of the instrument driver and the device firmware.
+            </summary>
+            <param name="Instrument_Driver_Revision">
+            This parameter returns the Instrument Driver revision.
+            
+            Note: The array must contain at least 256 elements ViChar[256].  You may pass VI_NULL if you do not need this value.
+            
+            </param>
+            <param name="Firmware_Revision">
+            This parameter returns the device firmware revision. 
+            
+            Note: The array must contain at least 256 elements ViChar[256].  You may pass VI_NULL if you do not need this value.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.saveSetup(System.Int16)">
+            <summary>
+            This function is used to save the current instrument setup to the instrument memory.
+            
+            Note: 
+            This function is valid for: TED4000, LDC4000, ITC4000
+            </summary>
+            <param name="Setup">
+            This parameter specifies the zero based setup number.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.recallSetup(System.Int16)">
+            <summary>
+            This function is used to recall a previously saved setup in the instrument memory.
+            
+            Note: 
+            This function is valid for: TED4000, LDC4000, ITC4000
+            </summary>
+            <param name="Setup">
+            This parameter specifies the zero based setup number.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setSetupLabel(System.Int16,System.String)">
+            <summary>
+            This function sets the identification label of the selected setup .
+            
+            Note: 
+            This function is valid for: TED4000, LDC4000, ITC4000
+            </summary>
+            <param name="Setup">
+            This parameter specifies the zero based setup number.
+            
+            </param>
+            <param name="Label">
+            This parameter specifies the identification label. For maximum string length of the identification label see your users manual.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getSetupLabel(System.Int16,System.Text.StringBuilder)">
+            <summary>
+            This function returns the identification label of the selected setup.
+            
+            Note: 
+            This function is valid for: TED4000, LDC4000, ITC4000
+            </summary>
+            <param name="Setup">
+            This parameter specifies the zero based setup number.
+            
+            </param>
+            <param name="Label">
+            This parameter returns the identification label.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getNumSetup(System.Int16@)">
+            <summary>
+            This function returns the number of different setups the instrument can store.
+            
+            Note: 
+            This function is valid for: TED4000, LDC4000, ITC4000
+            </summary>
+            <param name="Number_of_Setups">
+            This parameter returns the number of setups available in the instrument.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setDigIoDirection(System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            This function sets the digital I/O port direction.
+            
+            Note: 
+            This function is valid for: TED4000, LDC4000, ITC4000
+            </summary>
+            <param name="IO_1">
+            This parameter specifies the I/O port #1 direction.
+            
+            Input:  VI_OFF (0)
+            Output: VI_ON  (1)
+            
+            </param>
+            <param name="IO_2">
+            This parameter specifies the I/O port #2 direction.
+            
+            Input:  VI_OFF (0)
+            Output: VI_ON  (1)
+            
+            </param>
+            <param name="IO_3">
+            This parameter specifies the I/O port #3 direction.
+            
+            Input:  VI_OFF (0)
+            Output: VI_ON  (1)
+            
+            </param>
+            <param name="IO_4">
+            This parameter specifies the I/O port #4 direction.
+            
+            Input:  VI_OFF (0)
+            Output: VI_ON  (1)
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getDigIoDirection(System.Boolean@,System.Boolean@,System.Boolean@,System.Boolean@)">
+            <summary>
+            This function returns the digital I/O port direction.
+            
+            Note: 
+            This function is valid for: TED4000, LDC4000, ITC4000
+            </summary>
+            <param name="IO_1">
+            This parameter returns the I/O port #1 direction where VI_OFF (0) indicates input and VI_ON (1) indicates output.
+            
+            Note: You may pass VI_NULL if you don't need this value.
+            
+            </param>
+            <param name="IO_2">
+            This parameter returns the I/O port #2 direction where VI_OFF (0) indicates input and VI_ON (1) indicates output.
+            
+            Note: You may pass VI_NULL if you don't need this value.
+            
+            </param>
+            <param name="IO_3">
+            This parameter returns the I/O port #3 direction where VI_OFF (0) indicates input and VI_ON (1) indicates output.
+            
+            Note: You may pass VI_NULL if you don't need this value.
+            
+            </param>
+            <param name="IO_4">
+            This parameter returns the I/O port #4 direction where VI_OFF (0) indicates input and VI_ON (1) indicates output.
+            
+            Note: You may pass VI_NULL if you don't need this value.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.setDigIoOutput(System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            This function sets the digital I/O outputs.
+            
+            Note: Only ports configured as outputs are affected by this function. Use &lt;Set Digital I/O Direction&gt; to configure ports as outputs.
+            
+            Note: 
+            This function is valid for: TED4000, LDC4000, ITC4000
+            </summary>
+            <param name="IO_1">
+            This parameter specifies the I/O port #1 output.
+            
+            Low level:  VI_OFF (0)
+            High level: VI_ON  (1)
+            
+            </param>
+            <param name="IO_2">
+            This parameter specifies the I/O port #2 output.
+            
+            Low level:  VI_OFF (0)
+            High level: VI_ON  (1)
+            
+            </param>
+            <param name="IO_3">
+            This parameter specifies the I/O port #3 output.
+            
+            Low level:  VI_OFF (0)
+            High level: VI_ON  (1)
+            
+            </param>
+            <param name="IO_4">
+            This parameter specifies the I/O port #4 output.
+            
+            Low level:  VI_OFF (0)
+            High level: VI_ON  (1)
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getDigIoOutput(System.Boolean@,System.Boolean@,System.Boolean@,System.Boolean@)">
+            <summary>
+            This function returns the digital I/O output settings.
+            
+            Note: 
+            This function is valid for: TED4000, LDC4000, ITC4000
+            </summary>
+            <param name="IO_1">
+            This parameter returns the I/O port #1 output where VI_OFF (0) indicates low level and VI_ON (1) indicates high level.
+            
+            Note: You may pass VI_NULL if you don't need this value.
+            
+            </param>
+            <param name="IO_2">
+            This parameter returns the I/O port #2 output where VI_OFF (0) indicates low level and VI_ON (1) indicates high level.
+            
+            Note: You may pass VI_NULL if you don't need this value.
+            
+            </param>
+            <param name="IO_3">
+            This parameter returns the I/O port #3 output where VI_OFF (0) indicates low level and VI_ON (1) indicates high level.
+            
+            Note: You may pass VI_NULL if you don't need this value.
+            
+            </param>
+            <param name="IO_4">
+            This parameter returns the I/O port #4 output where VI_OFF (0) indicates low level and VI_ON (1) indicates high level.
+            
+            Note: You may pass VI_NULL if you don't need this value.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.getDigIoPort(System.Boolean@,System.Boolean@,System.Boolean@,System.Boolean@)">
+            <summary>
+            This function returns the actual digital I/O port level.
+            
+            Note: 
+            This function is valid for: TED4000, LDC4000, ITC4000
+            </summary>
+            <param name="IO_1">
+            This parameter returns the I/O port #1 level where VI_OFF (0) indicates low level and VI_ON (1) indicates high level.
+            
+            Note: You may pass VI_NULL if you don't need this value.
+            
+            </param>
+            <param name="IO_2">
+            This parameter returns the I/O port #2 level where VI_OFF (0) indicates low level and VI_ON (1) indicates high level.
+            
+            Note: You may pass VI_NULL if you don't need this value.
+            
+            </param>
+            <param name="IO_3">
+            This parameter returns the I/O port #3 level where VI_OFF (0) indicates low level and VI_ON (1) indicates high level.
+            
+            Note: You may pass VI_NULL if you don't need this value.
+            
+            </param>
+            <param name="IO_4">
+            This parameter returns the I/O port #4 level where VI_OFF (0) indicates low level and VI_ON (1) indicates high level.
+            
+            Note: You may pass VI_NULL if you don't need this value.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.writeRaw(System.String)">
+            <summary>
+            This function writes directly to the instrument.
+            </summary>
+            <param name="Command">
+            Data to send to the instrument.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.TL4000.TL4000.readRaw(System.Text.StringBuilder,System.UInt32,System.UInt32@)">
+            <summary>
+            This function reads directly from the instrument.
+            
+            </summary>
+            <param name="Buffer">
+            Data read from the instrument.
+            </param>
+            <param name="Size">
+            This parameter specifies the buffer size.
+            
+            </param>
+            <param name="Return_Count">
+            Number of bytes actually transferred.
+            
+            Note: You may pass VI_NULL if you don't need this value.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="P:Thorlabs.TL4000.TL4000.Handle">
+            <summary>
+            Gets the instrument handle.
+            </summary>
+            <value>
+            The value is the IntPtr that represents the handle to the instrument.
+            </value>
+        </member>
+    </members>
+</doc>
