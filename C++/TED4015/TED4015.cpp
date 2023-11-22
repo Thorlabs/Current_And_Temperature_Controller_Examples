@@ -270,7 +270,7 @@ void TL4000Setting(ViSession handle)
 }
 
 /*---------------------------------------------------------------------------
-  Change the LD Current Setpoint
+  Change the TEC Current Setpoint
 ---------------------------------------------------------------------------*/
 void ChangeTecCurrSetpoint(ViSession handle)
 {
@@ -281,7 +281,7 @@ void ChangeTecCurrSetpoint(ViSession handle)
     ViStatus err;
     ViSession instrHdl = VI_NULL;
 
-    TL4000_getLdCurrSetpoint(handle, 0, &tecCurrSetpoint);
+    TL4000_getTecCurrSetpoint(handle, 0, &tecCurrSetpoint);
     cout << "\nTEC Current Setpoint: " << tecCurrSetpoint << " A\n";
 
     while (!success)
