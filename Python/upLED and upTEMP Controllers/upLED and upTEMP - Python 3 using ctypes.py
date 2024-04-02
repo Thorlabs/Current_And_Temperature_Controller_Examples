@@ -102,10 +102,10 @@ elif (modelName.value).decode() == "upTEMP":
 
     #Configure which type of temperature sensor is connected (here: thermistor)
     #
-    #TLUP_TEMP_SENS_8TH  (1): 8 thermistor channels are available
-    #TLUP_TEMP_SENS_8TC  (2): 8 thermocouple channels are available
-    #TLUP_TEMP_SENS_4RTD (3): 4 resistance temperature device (RTD) (e.g. Pt100) channels are available
-    lib.TLUP_setTempSensConfig(upHandle, c_int(1))
+    #TLUP_TEMP_SENS_8TH  (0): 8 thermistor channels are available
+    #TLUP_TEMP_SENS_8TC  (1): 8 thermocouple channels are available
+    #TLUP_TEMP_SENS_4RTD (2): 4 resistance temperature device (RTD) (e.g. Pt100) channels are available
+    lib.TLUP_setTempSensConfig(upHandle, c_int(0))
 
     #Configure which temperature unit is used (here: Celsius)
     #
