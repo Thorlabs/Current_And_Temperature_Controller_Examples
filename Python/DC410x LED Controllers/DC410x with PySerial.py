@@ -1,6 +1,11 @@
+# Title: DC410X in Python with Serial Command. 
+# Created Date: 2023 - 03 - 13
+# Last modified date: 2023 - 03 - 13
+# Python Version Used: python3
+# Notes: This example demonstrates how to control a Thorlabs DC410X controller in Python using serial commands. 
+
 import serial
 import time
-
 
 #Make the COM port settings as required by the DC410x controllers.
 baud_rate = 115200
