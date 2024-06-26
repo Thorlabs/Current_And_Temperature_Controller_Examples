@@ -1,9 +1,9 @@
-﻿// Title: ITC4000 SCPI in Python. 
-// Created Date: 2023 - 04 - 19
-// Last modified date: 2023 - 04 - 19
-// Python Version Used: python3
-// NI-VISA Driver Version: 24.0
-// Notes: This example demonstrates how to control a Thorlabs ITC laser diode controller in Python using SCPI commands. 
+# Title: ITC4000 SCPI in Python. 
+# Created Date: 2023 - 04 - 19
+# Last modified date: 2023 - 04 - 19
+# Python Version Used: python3
+# NI-VISA Driver Version: 24.0
+# Notes: This example demonstrates how to control a Thorlabs ITC laser diode controller in Python using SCPI commands. 
 
 #Import the PyVISA library to Python.
 import pyvisa
