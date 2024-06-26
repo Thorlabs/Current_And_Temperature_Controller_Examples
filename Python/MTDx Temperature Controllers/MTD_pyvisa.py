@@ -1,4 +1,10 @@
-#Tested with MTD415T, MTDEVAL1,TECF2S,TH10K
+# Title: MTD Series in Python with Pyvisa. 
+# Created Date: 2023 - 06 - 05
+# Last modified date: 2023 - 06 - 05
+# Python Version Used: python3
+# Notes: This example demonstrates how to control a Thorlabs MTD Series controller in Python using pyvisa library. 
+# Tested with MTD415T, MTDEVAL1,TECF2S,TH10K
+
 import pyvisa
 import sys
 import time
