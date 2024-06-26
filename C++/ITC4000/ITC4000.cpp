@@ -1,3 +1,11 @@
+﻿// Title: ITC4000 in C++. 
+// Created Date: 2023 - 11 - 09
+// Last modified date: 2023 - 11 - 09
+// C++ Version Used: ISO C++ 14
+// Thorlabs Driver Version: 3.1.0
+// Notes: This example demonstrates how to initialize the controller, make settings for the TEC controller, 
+//and make settings for the laser diode controller.
+
 #include <iostream>
 #include <cstring>
 #include <vector>
