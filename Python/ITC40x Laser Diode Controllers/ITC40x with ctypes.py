@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # Title: ITC4000 in Python with CTypes. 
 # Created Date: 2023 - 04 - 19
 # Last modified date: 2023 - 04 - 19
