@@ -1,4 +1,9 @@
-#Tested with Python 3.10, 64 bit
+# Title: DC2200 SCPI in Python. 
+# Created Date: 2022 - 02 - 16
+# Last modified date: 2022 - 02 - 16
+# Python Version Used: python3
+# NI-VISA Driver Version: 24.0
+# Notes: This example demonstrates how to control a Thorlabs DC2200 controller in Python using SCPI commands. 
 
 #Import the PyVISA and time library to Python.
 import pyvisa
