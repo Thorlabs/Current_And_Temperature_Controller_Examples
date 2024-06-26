@@ -1,3 +1,10 @@
+# Title: CLD1010 SCPI in Python. 
+# Created Date: 2022 - 02 - 16
+# Last modified date: 2022 - 02 - 16
+# Python Version Used: python3
+# NI-VISA Driver Version: 24.0
+# Notes: This example demonstrates how to control a Thorlabs CLD1010 controller in Python using SCPI commands. 
+
 #Import the PyVISA library to Python.
 import pyvisa
 
