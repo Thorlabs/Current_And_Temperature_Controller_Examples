@@ -1,3 +1,11 @@
+﻿// Title: TED4015 in C++. 
+// Created Date: 2023 - 11 - 09
+// Last modified date: 2023 - 11 - 09
+// C++ Version Used: ISO C++ 14
+// Thorlabs Driver Version: 3.1.0
+// Notes: This example demonstrates how to initialize the controller, 
+// make settings for the TEC controller and activate the temperature control.
+
 #include <iostream>
 #include <cstring>
 #include <vector>

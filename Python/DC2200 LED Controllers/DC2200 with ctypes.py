@@ -1,4 +1,9 @@
-#Tested with Python 3.7 and 3.10, 64 bit
+# Title: DC2200 in Python with CTypes. 
+# Created Date: 2022 - 02 - 16
+# Last modified date: 2022 - 02 - 16
+# Python Version Used: python 3.7 and 3.10
+# Thorlabs Driver Version: 1.5
+# Notes: This example demonstrates how to control a Thorlabs DC2200 controller in Python using CTypes library. 
 
 #Import the necessary libraries to Python.
 import ctypes

@@ -1,4 +1,12 @@
-﻿using System;
+﻿// Title: ITC4000 in C#. 
+// Created Date: 2023 - 07 - 28
+// Last modified date: 2023 - 07 - 28
+// .NET version: 4.7.2
+// Thorlabs DLL version: 3.1.0.0
+// Notes: The example connects to a Thorlabs ITC4000 series controller, make settings for the TEC controller, 
+//start PID auto tune and make settings for the laser diode controller.
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Linq;

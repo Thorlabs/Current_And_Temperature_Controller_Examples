@@ -1,4 +1,12 @@
-﻿using System;
+﻿// Title: TED4015 in C#. 
+// Created Date: 2023 - 04 - 12
+// Last modified date: 2023 - 04 - 12
+// .NET version: 4.7.2
+// Thorlabs DLL version: 3.1.0.0
+// Notes: The example connects to a Thorlabs TED4015 controller, makes settings for the elements and displays values. 
+
+
+using System;
 using System.Linq;
 using System.Threading;
 using Thorlabs.TL4000;

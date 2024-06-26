@@ -1,4 +1,11 @@
-﻿using System;
+﻿// Title: PT1C Temperature Cycle in C#. 
+// Created Date: 2023 - 04 - 11
+// Last modified date: 2023 - 04 - 11
+// .NET version: 4.7.2
+// Notes: This example demonstrates how to initialize the PT1C 
+//and set up an acquisition thread to cycle the temperature between two user-supplied values. 
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

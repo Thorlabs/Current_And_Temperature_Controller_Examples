@@ -1,7 +1,12 @@
 # -*- coding: utf-8 -*-
-"""
-Example of C Libraries for ITC4* in Python with CTypes
-"""
+
+# Title: ITC4000 in Python with CTypes. 
+# Created Date: 2023 - 04 - 19
+# Last modified date: 2023 - 04 - 19
+# Python Version Used: python3
+# Thorlabs Driver Version: 3.1.0
+# Notes: This example demonstrates how to control a Thorlabs ITC laser diode controller in Python using CTypes library. 
+
 import os
 import time
 from ctypes import *

@@ -12,12 +12,8 @@ Other IDEs can be used, but instructions are not provided in this repository.
 
 ### Python Requirements
 
-Python examples make use of the Ctypes module or the pySerial module, which can be installed using the command
+Some python examples make use of the pySerial module, which can be installed using the command
 
-```
-pip install ctypes
-```
-and
 ```
 pip install pyserial
 ```
