@@ -3,7 +3,7 @@
 % Last modified date: 2024-03-09
 % Matlab Version:R2022a
 % Thorlabs DLL version:3.1.0
-% Notes:The example connects to a CLD1010 laser diode driver, changes the temperature setpoint and turns on TEC output
+% Notes:The example connects to a CLD1010 laser diode driver, changes the temperature and setpoint and turns on TEC output
 % Tested for CLD1010, firmware version 2.1.0
 %
 clc;
@@ -33,11 +33,26 @@ if a==0
     calllib('TL4000_64', 'TL4000_setTempSetpoint', handle.value, 25.0);
     temperaturesetpoint=libpointer('doublePtr',0);
     calllib('TL4000_64', 'TL4000_getTempSetpoint', handle.value, 0, temperaturesetpoint);
-    disp(['Temperature was set to ' ,num2str(temperaturesetpoint.value),'°C']);
+    disp(['Temperature setpoint:  ' ,num2str(temperaturesetpoint.value),'°C']);
     calllib('TL4000_64', 'TL4000_switchTecOutput',handle.value,true);
-    pause(3);
+    
+    % measure temperature
+    temperature=libpointer('doublePtr',0);
+    for i=1:5
+        calllib('TL4000_64', 'TL4000_measTemp',handle.value,temperature);
+        disp(['Temperature:' ,num2str(temperature.value),'°C']);
+        pause(1);
+    end
+
+    % Make laser diode settings
+    calllib('TL4000_64', 'TL4000_setLdOperatingMode', handle.value, 0);%0: constant current mode, 1: constant power mode
+    calllib('TL4000_64', 'TL4000_setLdCurrSetpoint', handle.value, 0.04);%set current to 0.04 A
+    currentsetpoint=libpointer('doublePtr',0);
+    calllib('TL4000_64', 'TL4000_getLdCurrSetpoint', handle.value, 0, currentsetpoint);
+    disp(['Current setpoint:  ' ,num2str(currentsetpoint.value),' A']);
+
+    % close device
     calllib('TL4000_64', 'TL4000_switchTecOutput',handle.value,false);
-    % close connection to device
     calllib('TL4000_64', 'TL4000_close',handle.value);
 end
 

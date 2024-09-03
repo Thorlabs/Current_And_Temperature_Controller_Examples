@@ -6,6 +6,8 @@ The example connects to a CLD1010 laser diode driver, changes the temperature se
 
 The code uses the C library DLL file TL4000_64.dll
 
+With suitable modifications, the example code can also be used for the laser diode and temperature controllers ITC40x, TED40x and LDC2x, that use the same library. 
+
 In order to avoid error messages, comment out the “__fastcall” and “signed” calling conventions in the header file “visatype.h”
 in the folder: C:\Program Files\IVI Foundation\VISA\Win64\Include
 
