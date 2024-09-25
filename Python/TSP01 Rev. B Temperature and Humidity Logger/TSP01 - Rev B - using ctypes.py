@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
+# Title: TSP01 Rev B in Python with CTypes. 
+# Created Date: 2022 - 10 - 10
+# Last modified date: 2022 - 10 - 10
+# Python Version Used: python 3.10
+# Thorlabs DLL version: 1.0.262.119
+# Notes: This example demonstrates how to connect a Thorlabs TSP01 Rev B in Python using CTypes library. 
+
 """
-Example of TSP01 Rev. B in Python 3.10 (64-bit), using just the DLL file with ctypes.
-
-See manual for description of what arguments do in the DLL functions.
-
 Please note that this example only works with TSP01 units with "Rev. B" printed on the back.
 """
 

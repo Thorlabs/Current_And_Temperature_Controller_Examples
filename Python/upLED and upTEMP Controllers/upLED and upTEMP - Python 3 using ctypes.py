@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
 
+# Title: upLED and upTEMP in Python with CTypes. 
+# Created Date: 2022 - 11 - 21
+# Last modified date: 2024 - 04 - 02
+# Python Version Used: python3
+# Thorlabs Dll Version: 1.2.1588.335
+# Notes: This example demonstrates how to control a Thorlabs upLED LED controller and a upTEMP temperature logger in Python using ctypes.
+
 """
 Example of C Libraries for TLUP in Python 3 with CTypes
 

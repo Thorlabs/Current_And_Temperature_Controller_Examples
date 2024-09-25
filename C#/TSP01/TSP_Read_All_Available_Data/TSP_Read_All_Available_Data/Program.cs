@@ -1,4 +1,11 @@
-﻿using System;
+﻿// Title: TSP01 in C#. 
+// Created Date: 2022 - 04 - 19
+// Last modified date: 2022 - 04 - 19
+// .NET version: 4.7.2
+// Thorlabs DLL version: 1.0.262.119
+// Notes: The example connects to a Thorlabs TSP01 Rev B sensor and pulls measurement values. 
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

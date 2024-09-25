@@ -1,4 +1,11 @@
-﻿using System;
+﻿// Title: PT1C Set Temperature in C#. 
+// Created Date: 2023 - 04 - 11
+// Last modified date: 2023 - 04 - 11
+// .NET version: 4.7.2
+// Notes: The example demonstrates how to initialize and query the PT1C for values. 
+//The temperature setpoint is set and the current temperature is then printed.
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
