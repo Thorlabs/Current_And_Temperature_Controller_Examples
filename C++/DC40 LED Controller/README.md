@@ -1,16 +1,16 @@
 ## Example Description
-This example shows some of the functionality of the DCC2200.
-It demonstrates how to initialize the controller, get information about the controller and the LED, turn on and off the light and change the LED current.
+This example shows some of the functionality of the DC40.
+It demonstrates how to initialize the controller, get information about the controller and the LED and turn on and off the light.
 
 ## Instructions for Use
 
-Before building and running this example. Please make sure you have downloaded the DC2200 control app from here: 
-https://www.thorlabs.de/software_pages/ViewSoftwarePage.cfm?Code=DC2200
+Before building and running this example. Please make sure you have downloaded the DC40 control app from here: 
+https://www.thorlabs.de/software_pages/ViewSoftwarePage.cfm?Code=DC40
 
 Guides written for these examples are written with Microsoft's Visual Studio in mind. Other IDEs can be used, but instructions are not provided in this repository.
 1) Create a new VC++ project file or open the existed VC++ project file
 
-2) Under the Solution Explorer, right click the Source Files, then add the DC2200_Example.cpp to the Source Files
+2) Under the Solution Explorer, right click the Source Files, then add the DC40_Example.cpp to the Source Files
 
 3) Set the path of the header file according to the bit of the project you want to build:   
    a. Open Project\Properties\Configuration Properties\C/C++\General  
@@ -22,4 +22,4 @@ Guides written for these examples are written with Microsoft's Visual Studio in 
 
 7) Set additional depended library:  
    a. Open Project\Properties\Configuration Properties\Linker\Input  
-   b. Enter the additional depended libraries into Additional Dependencies (**visa32.lib;TLDC2200_32.lib;** or **visa64.lib;TLDC2200_64.lib**);
+   b. Enter the additional depended libraries into Additional Dependencies (**visa32.lib;TLDC_32.lib;** or **visa64.lib;TLDC_64.lib**);
