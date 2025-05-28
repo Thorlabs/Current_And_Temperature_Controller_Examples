@@ -7,9 +7,9 @@ Labview 2023 Q3, 64 Bit\
 Thorlabs Optical Power Monitor software version 6.1 
  
 ## Front Panel
-![Front Panel](CLD1010_FrontPanel.PNG)
+![Front Panel](CLD1010_FrontPanel.jpg)
 
 ## Block Diagram
-![Block Diagram](CLD1010_BlockDiagram.PNG)
+![Block Diagram](CLD1010_BlockDiagram.jpg)
 
 
