@@ -1,0 +1,7 @@
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\GitHub\Current_And_Temperature_Controller_Examples\C#\PTC1\PTC1_Set_Temperature\PTC1_Set_Temperature\bin\Debug\PT1C_Set_Temperature.exe.config
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\GitHub\Current_And_Temperature_Controller_Examples\C#\PTC1\PTC1_Set_Temperature\PTC1_Set_Temperature\bin\Debug\PT1C_Set_Temperature.exe
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\GitHub\Current_And_Temperature_Controller_Examples\C#\PTC1\PTC1_Set_Temperature\PTC1_Set_Temperature\bin\Debug\PT1C_Set_Temperature.pdb
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\GitHub\Current_And_Temperature_Controller_Examples\C#\PTC1\PTC1_Set_Temperature\PTC1_Set_Temperature\obj\Debug\PTC1_Set_Temperature.csproj.AssemblyReference.cache
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\GitHub\Current_And_Temperature_Controller_Examples\C#\PTC1\PTC1_Set_Temperature\PTC1_Set_Temperature\obj\Debug\PTC1_Set_Temperature.csproj.CoreCompileInputs.cache
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\GitHub\Current_And_Temperature_Controller_Examples\C#\PTC1\PTC1_Set_Temperature\PTC1_Set_Temperature\obj\Debug\PT1C_Set_Temperature.exe
+C:\Users\zizhang\OneDrive - THORLABS Inc\Documents\GitHub\Current_And_Temperature_Controller_Examples\C#\PTC1\PTC1_Set_Temperature\PTC1_Set_Temperature\obj\Debug\PT1C_Set_Temperature.pdb

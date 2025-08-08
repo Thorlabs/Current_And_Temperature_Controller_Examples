@@ -1,8 +1,8 @@
-﻿// Title: PT1C Temperature Cycle in C#. 
+﻿// Title: PTC1 Temperature Cycle in C#. 
 // Created Date: 2023 - 04 - 11
 // Last modified date: 2023 - 04 - 11
 // .NET version: 4.7.2
-// Notes: This example demonstrates how to initialize the PT1C 
+// Notes: This example demonstrates how to initialize the PTC1 
 //and set up an acquisition thread to cycle the temperature between two user-supplied values. 
 
 using System;
@@ -22,20 +22,20 @@ namespace PT1C_Temperature_Cycle
         static string portName = "";
         static double upperTemp = 0;
         static double lowerTemp = 0;
-        static PT1C_Control pt;
+        static PTC1_Control pt;
         static bool cooling = false;
         static StreamWriter file;
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter the port name for the PT1C....");
+            Console.WriteLine("Enter the port name for the PTC1 (e.g. COM3)....");
             portName = Console.ReadLine().Trim();
 
             //Initialize the PT1C
-            pt = new PT1C_Control(portName);
+            pt = new PTC1_Control(portName);
             if (!pt.Connected)
             {
-                Console.WriteLine("Issue with connecting to PT1C... Closing");
+                Console.WriteLine("Issue with connecting to PTC1... Closing");
                 Console.ReadKey();
                 return;
             }

@@ -8,7 +8,7 @@ using System.IO.Ports;
 
 namespace PT1C_Temperature_Cycle
 {
-    public class PT1C_Control
+    public class PTC1_Control
     {
         SerialPort pt1cPort;
         public bool Connected 
@@ -16,7 +16,7 @@ namespace PT1C_Temperature_Cycle
             get;
             set;
         }
-        public PT1C_Control(string portName)
+        public PTC1_Control(string portName)
         {
             //Try initializing the port with the supplued port name
             try

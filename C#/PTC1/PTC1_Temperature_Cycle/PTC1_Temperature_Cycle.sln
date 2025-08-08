@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32802.440
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PT1C_Temperature_Cycle", "PT1C_Temperature_Cycle\PT1C_Temperature_Cycle.csproj", "{2F49897F-B17D-498E-A1EE-448FBB9C9033}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTC1_Temperature_Cycle", "PTC1_Temperature_Cycle\PTC1_Temperature_Cycle.csproj", "{2F49897F-B17D-498E-A1EE-448FBB9C9033}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {77B72E35-968D-4235-94F6-D8FBC34AD25C}
+		SolutionGuid = {A2DFA223-82AF-4232-9D39-2D8840721996}
 	EndGlobalSection
 EndGlobal
