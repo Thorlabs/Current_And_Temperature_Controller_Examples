@@ -13,7 +13,7 @@ import Thorlabs.TLDC2200_64.Interop.*;
 %Uncomment the next line to see an overview of the available functions
 %methodsview('Thorlabs.TLDC2200_64.Interop.TLDC2200')
 
-%Create a dummy TLUP object to check for compatible devices.
+%Create a dummy TLDC2200 object to check for compatible devices.
 handle = System.IntPtr(0);
 tldc2200 = TLDC2200(handle);
 
