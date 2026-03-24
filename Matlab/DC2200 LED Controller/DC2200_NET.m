@@ -1,6 +1,6 @@
 % Title: DC2200_NET_NET.m
 % Created Date: 2026-03-24
-% Last modified date: 2023-12-15
+% Last modified date: 2026-03-24
 % Matlab Version:R2023a
 % Thorlabs DLL version:1.6.2181.41
 %% Notes:The example connects to a DC2200 device, changes the current setpoint and switches on light output
@@ -25,8 +25,6 @@ if deviceCount == 0
     disp('Unable to find compatible connected devices. Is the device connected, on, and using the TLUP driver? ');
     return
 end
-
-
 
 %display device information
 instrumentName=System.Text.StringBuilder(256);
