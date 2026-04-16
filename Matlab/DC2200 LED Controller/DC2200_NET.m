@@ -43,6 +43,7 @@ device = TLDC2200(resourcename.ToString(), false, false);
 %set current and enable output
 device.setOperationMode(0);
 device.setConstCurrent(0.01);
+input('Press enter to turn on the light', 's');
 device.setLedOnOff(true);%switch on LED
 pause(2)
 
