@@ -130,7 +130,7 @@ int main(int argc, char* argv[])
 		//This parameter returns the value TL5000_LD_OPMODE_CC(0) for constant current mode and TL5000_LD_OPMODE_CP(1) for constant power mode.
 		if (err) printViError(instrHdl, err);		
 		else{
-							switch (ldOperatingMode)
+				switch (ldOperatingMode)
 				{
 					case 0:
 						cout << "LDC Operating Mode: constant current mode\n";
@@ -152,7 +152,7 @@ int main(int argc, char* argv[])
 		TL5000_getLdcLdPolarity(instrHdl, 1, &ldPolarity);
 		if (err) printViError(instrHdl, err);
 		else{
-							switch (ldPolarity)
+				switch (ldPolarity)
 				{
 					case 0:
 						cout << "LDC LD Polarity: anode-grounded\n";
