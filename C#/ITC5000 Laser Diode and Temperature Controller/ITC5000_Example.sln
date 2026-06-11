@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36915.13 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITC5000_Example", "ITC5000_Example\ITC5000_Example.csproj", "{44C49F98-2FBE-4AF3-B208-2112D42CFF84}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{44C49F98-2FBE-4AF3-B208-2112D42CFF84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44C49F98-2FBE-4AF3-B208-2112D42CFF84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44C49F98-2FBE-4AF3-B208-2112D42CFF84}.Debug|x64.ActiveCfg = Debug|x64
+		{44C49F98-2FBE-4AF3-B208-2112D42CFF84}.Debug|x64.Build.0 = Debug|x64
+		{44C49F98-2FBE-4AF3-B208-2112D42CFF84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44C49F98-2FBE-4AF3-B208-2112D42CFF84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44C49F98-2FBE-4AF3-B208-2112D42CFF84}.Release|x64.ActiveCfg = Release|x64
+		{44C49F98-2FBE-4AF3-B208-2112D42CFF84}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3CF30D73-0EF4-403F-A14E-691C3496489F}
+	EndGlobalSection
+EndGlobal

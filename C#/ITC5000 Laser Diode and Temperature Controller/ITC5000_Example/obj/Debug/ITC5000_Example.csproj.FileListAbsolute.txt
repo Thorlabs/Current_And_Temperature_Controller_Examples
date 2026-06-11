@@ -1,0 +1,10 @@
+C:\Users\gboedecker\source\repos\ITC5000_Example\ITC5000_Example\bin\Debug\ITC5000_Example.exe.config
+C:\Users\gboedecker\source\repos\ITC5000_Example\ITC5000_Example\bin\Debug\ITC5000_Example.exe
+C:\Users\gboedecker\source\repos\ITC5000_Example\ITC5000_Example\bin\Debug\ITC5000_Example.pdb
+C:\Users\gboedecker\source\repos\ITC5000_Example\ITC5000_Example\bin\Debug\Thorlabs.TL5000_64.Interop.dll
+C:\Users\gboedecker\source\repos\ITC5000_Example\ITC5000_Example\bin\Debug\Thorlabs.TL5000_64.Interop.xml
+C:\Users\gboedecker\source\repos\ITC5000_Example\ITC5000_Example\obj\Debug\ITC5000_Example.csproj.AssemblyReference.cache
+C:\Users\gboedecker\source\repos\ITC5000_Example\ITC5000_Example\obj\Debug\ITC5000_Example.csproj.CoreCompileInputs.cache
+C:\Users\gboedecker\source\repos\ITC5000_Example\ITC5000_Example\obj\Debug\ITC5000_.DC72856A.Up2Date
+C:\Users\gboedecker\source\repos\ITC5000_Example\ITC5000_Example\obj\Debug\ITC5000_Example.exe
+C:\Users\gboedecker\source\repos\ITC5000_Example\ITC5000_Example\obj\Debug\ITC5000_Example.pdb
