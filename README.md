@@ -1,5 +1,19 @@
 # Current_And_Temperature_Controller_Examples
-Software examples for Thorlabs laser diode drivers (CLD1010LP, CLD1011LP, CLD1015, ITC4001, ITC4005, ITC4020, ITC4005QCL, ITC5225), LED drivers (DC22, DC40, DC2200, DC4100, DC4104, upLED), and temperature drivers/monitors (TSP01, upTEMP, MTD415L, MTD415LE, MTD415T, MTD415TE, TED4015).   
+Software examples for Thorlabs current drivers
+
+https://www.thorlabs.com/drivers-mounts
+
+**Laser Diode Drivers** 
+
+ITC5225, ITC4001, ITC4005, ITC4020, ITC4005QCL, CLD1010LP, CLD1011LP, CLD1015
+
+**LED drivers** 
+
+DC22, DC40, DC2200, DC4100, DC4104, upLED
+
+**Temperature Drivers/Monitors**
+
+TSP01, upTEMP, MTD415L, MTD415LE, MTD415T, MTD415TE, TED4015  
 
 ## Repo Organization
 All examples are split up by programming language and product type. Directions on using specific examples are given within the folders.
