@@ -1,6 +1,6 @@
 # Title: DC2200 SCPI in Python. 
 # Created Date: 2022 - 02 - 16
-# Last modified date: 2022 - 02 - 16
+# Last modified date: 2026 - 08 - 13
 # Python Version Used: python3
 # NI-VISA Driver Version: 24.0
 # Notes: This example demonstrates how to control a Thorlabs DC2200 controller in Python using SCPI commands. 
@@ -11,9 +11,10 @@ import time
 
 #Opens a resource manager
 rm = pyvisa.ResourceManager()
+print("Available resources: ", rm.list_resources())
 
 #Opens the connection to the device. The variable instr is the handle for the device.
-# !!! In the USB number the serial number (M00...) needs to be changed to the one of the connected device.
+# Use the previous output to adapt the resource string in the following line.
 instr = rm.open_resource('USB0::0x1313::0x80C8::M00460202::INSTR')
 
 #The command instr.query can be used when you want to get data from the device.

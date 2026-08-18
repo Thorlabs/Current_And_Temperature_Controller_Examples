@@ -1,5 +1,10 @@
 # Included Examples
 
+## DC410x with ctypes
+
+The sample code shows how you can control a Thorlabs DC410x LED controller in Python.
+The ctypes library can be used to load the DLL file for the DC4100 controller and use the functions implemented in the DLL. These library needs to be installed separately on the computer.
+
 ## DC4100 and DC4104 (DC410x) LED Controller Open and Control with PySerial
 
 The sample code shows how you can control a Thorlabs DC410x LED controller in Python using PySerial. The PySerial library is used to send serial commands to the controller and make or read settings on it. The PySerial library needs to be installed separately on the computer.

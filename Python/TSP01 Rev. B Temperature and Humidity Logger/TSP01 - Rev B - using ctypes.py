@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # Title: TSP01 Rev B in Python with CTypes. 
 # Created Date: 2022 - 10 - 10
-# Last modified date: 2022 - 10 - 10
-# Python Version Used: python 3.10
+# Last modified date: 2026 - 08 - 18
+# Python Version Used: python 3.13
 # Thorlabs DLL version: 1.0.262.119
 # Notes: This example demonstrates how to connect a Thorlabs TSP01 Rev B in Python using CTypes library. 
 
@@ -11,8 +11,9 @@ Please note that this example only works with TSP01 units with "Rev. B" printed 
 """
 
 from ctypes import *
+import time
 
-lib = cdll.LoadLibrary("C:\Program Files\IVI Foundation\VISA\Win64\Bin\TLTSPB_64.dll")
+lib = cdll.LoadLibrary(r"C:\Program Files\IVI Foundation\VISA\Win64\Bin\TLTSPB_64.dll")
 
 #Find out if there are devices connected.
 deviceCount = c_ulong()
@@ -30,9 +31,9 @@ if deviceCount.value >= 1:
         print("Which device?")
         for i in range(deviceCount.value):
             lib.TLTSPB_getRsrcName(0, i, deviceName)
-            print('#' + str(i+1) + " " + deviceName.value)
+            print('#' ,str(i+1) ," " , deviceName.value.decode())
         device_num = input(">>>")
-        lib.TLTSPB_getRsrcName(0, (device_num-1), deviceName)
+        lib.TLTSPB_getRsrcName(0, (int(device_num)-1), deviceName)
         
     #Initialize the device.
     sessionHandle=c_ulong(0)
@@ -48,30 +49,33 @@ if deviceCount.value >= 1:
     ch1_extern = c_ushort(12)
     ch2_extern = c_ushort(13)
     
+    for i in range(1, 10):
+        #Returns the temperature measured by the internal sensor in the TSP01 in °C.
+        lib.TLTSPB_getTemperatureData(sessionHandle, ch_intern, attribute, byref(temperature))
+        print ("Internal Sensor Temperature: ", str(round(temperature.value,2)) , " °C")
 
-    #Returns the temperature measured by the internal sensor in the TSP01 in °C.
-    lib.TLTSPB_getTemperatureData(sessionHandle, ch_intern, attribute, byref(temperature))
-    print ("Internal Sensor Temperature: " + str(round(temperature.value,2)) + " °C")
+        #Channel 1
+        #Check if the channel is connected by verifying the resistance is not zero.
+        lib.TLTSPB_getThermRes(sessionHandle, ch1_extern, attribute, byref(resistance))
+        if resistance.value > 0.0:
+            #Returns the temperature measured by external sensor on Ch 1.
+            lib.TLTSPB_measTemperature(sessionHandle, ch1_extern, byref(temperature))
+            print("Ext. Ch 1 Temperature: ", str(round(temperature.value,2)) , " °C")
 
-    #Channel 1
-    #Check if the channel is connected by verifying the resistance is not zero.
-    lib.TLTSPB_getThermRes(sessionHandle, ch1_extern, attribute, byref(resistance))
-    if resistance.value > 0.0:
-        #Returns the temperature measured by external sensor on Ch 1.
-        lib.TLTSPB_measTemperature(sessionHandle, ch1_extern, byref(temperature))
-        print("Ext. Ch 1 Temperature: " + str(round(temperature.value,2)) + " °C")
+        #Same for Channel 2
+        lib.TLTSPB_getThermRes(sessionHandle, ch2_extern , attribute, byref(resistance))
+        if resistance.value > 0.0:
+            lib.TLTSPB_measTemperature(sessionHandle, ch2_extern , byref(temperature))
+            print("Ext. Ch 2 Temperature: ", str(round(temperature.value,2)) , " °C")
 
-    resistance = c_double(0.0)
+        #This returns the humidity measured by the internal sensor in the TSP01.
+        lib.TLTSPB_getHumidityData(sessionHandle, attribute, byref(humidity))
+        print("Humidity: ", str(round(humidity.value,2)) , " %")
 
-    #Same for Channel 2
-    lib.TLTSPB_getThermRes(sessionHandle, ch2_extern , attribute, byref(resistance))
-    if resistance.value > 0.0:
-        lib.TLTSPB_measTemperature(sessionHandle, ch2_extern , byref(temperature))
-        print("Ext. Ch 2 Temperature: " + str(round(temperature.value,2)) + " °C")
+        time.sleep(1)
 
-    #This returns the humidity measured by the internal sensor in the TSP01.
-    lib.TLTSPB_getHumidityData(sessionHandle, attribute, byref(humidity))
-    print("Humidity: " + str(round(humidity.value,2)) + " %")
+
+
     
     #Close the connection to the TSP01 Rev. B.
     lib.TLTSPB_close(sessionHandle)
