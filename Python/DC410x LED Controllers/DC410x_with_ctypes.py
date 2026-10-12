@@ -43,7 +43,7 @@ def main():
     #Make sure the LED is switched off (0 = off, 1 = on).
     lib.TLDC4100_setLedOnOff(DCHandle,-1,0)
 
-    res=lib.TLDC4100_setOperationMode(DCHandle, 500)#0: constant current mode, 1: percental current mode, 2: external control mode
+    res=lib.TLDC4100_setOperationMode(DCHandle, 1)#0: constant current mode, 1: percental current mode, 2: external control mode
 
     lib.TLDC4100_setPercentalBrightness(DCHandle,1, 5) #Set brightness for second channel to 5% (0-100%)
 
